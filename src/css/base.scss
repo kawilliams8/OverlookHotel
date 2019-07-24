@@ -1,6 +1,11 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 $primary-background: pink;
+$primary-font: 'Roboto', sans-serif;
 
 body {
   background-color: $primary-background;
+}
+
+h1 {
+  font-family: $primary-font;
 }
