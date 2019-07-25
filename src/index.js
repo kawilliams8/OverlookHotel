@@ -5,32 +5,47 @@ import './css/base.scss';
 import './images/spinner.gif';
 
 import Hotel from '../src/Hotel';
+import Customer from '../src/Customer';
+import Bookings from '../src/Bookings';
 
 let hotel, bookings, rooms, roomServices, users;
-fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings")
-  .then(response => response.json())
-  .then(dataset => bookings = dataset.bookings)
-  .catch(error => console.log(error))
 
-fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices")
-  .then(response => response.json())
-  .then(dataset => roomServices = dataset.roomServices)
-  .catch(error => console.log(error))
+let usersData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users');
+let roomsData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms');
+let bookingsData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings');
+let roomServicesData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices'); 
 
-fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users")
-  .then(response => response.json())
-  .then(dataset => users = dataset.users)
-  .catch(error => console.log(error))
-
-fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms")
-  .then(response => response.json())
-  .then(dataset => rooms = dataset.rooms)
-  .catch(error => console.log(error))
+Promise.all([usersData, roomsData, bookingsData, roomServicesData])
+  .then(values => Promise.all(values.map(value => value.json())))
+  .then(finalData => {
+    users = finalData[0];
+    rooms = finalData[1];
+    bookings = finalData[2];
+    roomServices = finalData[3];
+  });
 
 setTimeout(() => {
   hotel = new Hotel(users, rooms, bookings, roomServices);
-  hotel.getTodayDate();
-}, 2000)
+}, 400);
+
+setTimeout(() => {
+  hotel.addToCustomers(150, 'Katie1');
+  hotel.addToCustomers(151, 'Katie2');
+  hotel.addToCustomers(152, 'Katie3');
+  hotel.addToCustomers(153, 'Katie4');
+  hotel.addToCustomers(154, 'Katie5');
+  hotel.addToBookings(150, "2019/08/28", 13);
+  hotel.addToBookings(151, "2019/08/28", 14);
+  hotel.addToBookings(152, "2019/08/28", 15);
+  hotel.addToBookings(153, "2019/08/28", 16);
+  hotel.addToRoomServices(150, "2019/08/28", 'toast', 12.50);
+  hotel.addToRoomServices(151, "2019/08/28", 'toast', 12.50);
+  hotel.addToRoomServices(152, "2019/08/28", 'toast', 12.50);
+  hotel.addToRoomServices(153, "2019/08/28", 'toast', 12.50);
+  console.log(hotel.customers.find(customer => customer.id === 3))
+  console.log(hotel.customers.find(customer => customer.id === 153))
+  console.log(hotel.roomServices.filter(service => service.totalCost > 12))
+}, 1000);
 
 $(document).ready(() => {
   $('main').hide();
@@ -41,7 +56,7 @@ $('.splash-button').on('click', () => {
   $('.splash-div').fadeOut(250);
 })
 
-$(function () {
+$(() =>  {
   if ($(".tabs_container .tabs").length > 0) {
     var active_tab = $(".tab_content .tabs li:first-child").data("tab");
     $("#" + active_tab).show();

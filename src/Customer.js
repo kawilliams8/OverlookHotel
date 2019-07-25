@@ -1,8 +1,9 @@
 import DOMupdates from './DOMupdates';
 
 class Customer {
-  constructor() {
-
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
   }
 }
 
