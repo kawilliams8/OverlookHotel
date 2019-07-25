@@ -11,7 +11,7 @@ import sampleRoomServices from '../data/sampleRoomServices';
 import Hotel from '../src/Hotel';
 import DOMupdates from '../src/DOMupdates';
 
-chai.spy.on(DOMupdates, ['sample'], () => true)
+chai.spy.on(DOMupdates, ['showToday'], () => true)
 
 describe('Hotel', () => {
 
@@ -23,11 +23,18 @@ describe('Hotel', () => {
   it('should be a function which instantiates an instance of Hotel', () => {
     expect(Hotel).to.be.a('function');
     expect(hotel).to.be.an.instanceOf(Hotel);
-    // console.log('in Hotel test', hotel)
   });
-
-  it('should know the current date', () => {
+  
+  it('should know the current date as a MM/DD/YYYY format', () => {
     hotel.getTodayDate();
-    expect(hotel.today).to.be.a('number');
+    expect(hotel.today).to.be.a('string');
+  });
+  
+  it('should be able to add a new customer, with an id and name, to the existing customers array', () => {
+    expect(hotel.customers.length).to.equal(15);
+    hotel.addNewCustomer('New Customer');
+    expect(hotel.customers.length).to.equal(16);
+    expect(hotel.customers[15].id).to.equal(16);
+    expect(hotel.customers[15].name).to.equal('New Customer');
   });
 });

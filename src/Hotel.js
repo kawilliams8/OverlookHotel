@@ -5,16 +5,19 @@ import RoomServices from './RoomServices';
 
 class Hotel {
   constructor(users, rooms, bookings, roomServices) {
-    this.customers = users.users.map(user => new Customer(user.id, user.name)) || [];
-    this.rooms = rooms.rooms; 
-    this.bookings = bookings.bookings.map(booking => new Bookings(booking.userID, booking.date, booking.roomNumber)) || [];
-    this.roomServices = roomServices.roomServices.map(roomService => new RoomServices(roomService.userID, roomService.date, roomService.food, roomService.totalCost)) || [];
-    this.today = 'hi';
+    this.customers = users.map(user => new Customer(user.id, user.name)) || [];
+    this.rooms = rooms; 
+    this.bookings = bookings.map(booking => new Bookings(booking.userID, booking.date, booking.roomNumber)) || [];
+    this.roomServices = roomServices.map(roomService => new RoomServices(roomService.userID, roomService.date, roomService.food, roomService.totalCost)) || [];
+    this.today;
   }
 
-  addToCustomers(id, name) {
-    let customer1 = new Customer(id, name);
-    this.customers.push(customer1)
+  addNewCustomer(name) {
+    let id = this.customers.length + 1;
+    let newCustomer = new Customer(id, name);
+    return this.customers.push(newCustomer)
+    // console.log('in hotel addCust method', hotel)
+
   }
 
   addToBookings(id, date, roomNumber) {

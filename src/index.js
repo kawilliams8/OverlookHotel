@@ -25,27 +25,8 @@ Promise.all([usersData, roomsData, bookingsData, roomServicesData])
   });
 
 setTimeout(() => {
-  hotel = new Hotel(users, rooms, bookings, roomServices);
+  hotel = new Hotel(users.users, rooms.rooms, bookings.bookings, roomServices.roomServices);
 }, 400);
-
-setTimeout(() => {
-  hotel.addToCustomers(150, 'Katie1');
-  hotel.addToCustomers(151, 'Katie2');
-  hotel.addToCustomers(152, 'Katie3');
-  hotel.addToCustomers(153, 'Katie4');
-  hotel.addToCustomers(154, 'Katie5');
-  hotel.addToBookings(150, "2019/08/28", 13);
-  hotel.addToBookings(151, "2019/08/28", 14);
-  hotel.addToBookings(152, "2019/08/28", 15);
-  hotel.addToBookings(153, "2019/08/28", 16);
-  hotel.addToRoomServices(150, "2019/08/28", 'toast', 12.50);
-  hotel.addToRoomServices(151, "2019/08/28", 'toast', 12.50);
-  hotel.addToRoomServices(152, "2019/08/28", 'toast', 12.50);
-  hotel.addToRoomServices(153, "2019/08/28", 'toast', 12.50);
-  console.log(hotel.customers.find(customer => customer.id === 3))
-  console.log(hotel.customers.find(customer => customer.id === 153))
-  console.log(hotel.roomServices.filter(service => service.totalCost > 12))
-}, 1000);
 
 $(document).ready(() => {
   $('main').hide();
