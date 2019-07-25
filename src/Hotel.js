@@ -15,17 +15,15 @@ class Hotel {
   addNewCustomer(name) {
     let id = this.customers.length + 1;
     let newCustomer = new Customer(id, name);
-    return this.customers.push(newCustomer)
-    // console.log('in hotel addCust method', hotel)
-
+    return this.customers.push(newCustomer);
   }
 
-  addToBookings(id, date, roomNumber) {
-    let booking1 = new Bookings(id, date, roomNumber);
-    this.bookings.push(booking1);
+  addNewBooking(userID, date, roomNumber) {
+    let newBooking = new Bookings(userID, date, roomNumber);
+    return this.bookings.push(newBooking);
   }
 
-  addToRoomServices(id, date, food, cost) {
+  addNewRoomService(id, date, food, cost) {
     let service1 = new RoomServices(id, date, food, cost);
     this.roomServices.push(service1);
   }

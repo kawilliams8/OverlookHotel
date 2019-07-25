@@ -1,12 +1,10 @@
 import $ from 'jquery';
 import './css/base.scss';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
+// import all images
 import './images/spinner.gif';
 
 import Hotel from '../src/Hotel';
-import Customer from '../src/Customer';
-import Bookings from '../src/Bookings';
 
 let hotel, bookings, rooms, roomServices, users;
 
