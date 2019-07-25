@@ -25,4 +25,9 @@ describe('Hotel', () => {
     expect(hotel).to.be.an.instanceOf(Hotel);
     // console.log('in Hotel test', hotel)
   });
+
+  it('should know the current date', () => {
+    hotel.getTodayDate();
+    expect(hotel.today).to.be.a('number');
+  });
 });

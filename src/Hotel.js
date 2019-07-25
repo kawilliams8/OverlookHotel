@@ -6,10 +6,12 @@ class Hotel {
     this.rooms = rooms;
     this.bookings = bookings;
     this.roomServices = roomServices;
-    // console.log('in Hotel users', users)
-    // console.log('in Hotel rooms', rooms)
-    // console.log('in Hotel bookings', bookings)
-    // console.log('in Hotel roomServices', roomServices)
+    this.today;
+  }
+
+  getTodayDate() {
+    this.today = Date.now();
+    DOMupdates.showToday(this.today)
   }
 }
 

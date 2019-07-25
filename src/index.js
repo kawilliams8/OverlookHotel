@@ -30,15 +30,10 @@ fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms")
 setTimeout(() => {
   hotel = new Hotel(users, rooms, bookings, roomServices);
   console.log('in fetch', hotel)
+  hotel.getTodayDate();
 }, 2000);
 
 
 $(document).ready(() => {
-  //page load functions here
+  
 });
-
-// $('.start').on('click', () => {
-//   hotel = new Hotel(users, rooms, bookings, roomServices);
-//   console.log(hotel)
-//   $('.splash').hide();
-// })
