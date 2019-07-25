@@ -2,10 +2,31 @@
 $primary-background: pink;
 $primary-font: 'Roboto', sans-serif;
 
+* {
+  border: red 1px solid;
+  font-family: $primary-font;
+}
+
 body {
   background-color: $primary-background;
 }
 
-h1 {
-  font-family: $primary-font;
+.splash {
+
+  &.splash-div {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    margin: 10% auto;
+    width: 50%;
+  }
+  
+  &.splash-h2,
+  &.splash-spinner,
+  &.splash-button {
+    font-size: 21px;
+    margin: auto;
+    // text-align: center;
+  }
 }
