@@ -10,8 +10,18 @@ class Hotel {
   }
 
   getTodayDate() {
-    this.today = Date.now();
-    DOMupdates.showToday(this.today)
+    let today = new Date();
+    let mm = today.getMonth() + 1;
+    let dd = today.getDate();
+    let yyyy = today.getFullYear();
+    if (dd < 10) {
+      dd = '0' + dd;
+    }
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
+    this.today = mm + '/' + dd + '/' + yyyy;
+    DOMupdates.showToday(this.today);
   }
 }
 

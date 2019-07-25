@@ -37,6 +37,22 @@ $(document).ready(() => {
 })
 
 $('.splash-button').on('click', () => {
-  $('main').fadeIn(1000);
-  $('.splash-div').fadeOut(300);
+  $('main').delay(250).fadeIn(250);
+  $('.splash-div').fadeOut(250);
 })
+
+$(function () {
+  if ($(".tabs_container .tabs").length > 0) {
+    var active_tab = $(".tab_content .tabs li:first-child").data("tab");
+    $("#" + active_tab).show();
+    $(".tab_content .tabs li:first-child").addClass("active");
+
+    $(".tab_content .tabs li").click(function (e) {
+      var active_tab = $(this).data("tab");
+      $(".tab_content .text").hide();
+      $("#" + active_tab).show();
+      $(".tab_content .tabs li").removeClass("active");
+      $(this).addClass("active");
+    });
+  }
+});
