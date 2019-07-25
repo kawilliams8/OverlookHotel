@@ -20,7 +20,7 @@ fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServ
 fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users")
   .then(response => response.json())
   .then(dataset => users = dataset.users)
-  .catch(error => console.log(error));
+  .catch(error => console.log(error))
 
 fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms")
   .then(response => response.json())
@@ -29,16 +29,14 @@ fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms")
 
 setTimeout(() => {
   hotel = new Hotel(users, rooms, bookings, roomServices);
-  console.log('in fetch', hotel)
   hotel.getTodayDate();
-}, 2000);
-
+}, 2000)
 
 $(document).ready(() => {
   $('main').hide();
-});
+})
 
 $('.splash-button').on('click', () => {
-  $('main').show();
-  $('.splash-div').hide();
+  $('main').fadeIn(1000);
+  $('.splash-div').fadeOut(300);
 })
