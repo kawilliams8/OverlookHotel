@@ -67,18 +67,11 @@ class Hotel {
 
   listAvailableRooms(date) {
     let bookedRoomNumbers = this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
-    //3,5 are booked
-    let result = bookedRoomNumbers.reduce((acc, roomNum) => {
-      this.rooms.forEach(room => {
-        if (room.number !== roomNum ) {
-          acc.push(room);
-        };
-
-      });
-    return acc;
-  }, []);
-
-  console.log(result)
+    return this.rooms.filter((room) => {
+      if ((bookedRoomNumbers.indexOf(room.number) < 0)) {
+        return room;
+      }
+    }).sort((a,b) => a.number - b.number)
 }
 
 }

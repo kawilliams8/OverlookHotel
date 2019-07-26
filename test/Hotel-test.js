@@ -67,10 +67,8 @@ describe('Hotel', () => {
     expect(revenue).to.equal(1777.88);
   });
 
-  it.skip('should list out the available rooms for a given date', () => {
+  it('should create a list of the available rooms for a given date', () => {
     let availableRooms = hotel.listAvailableRooms('2019/10/17');
-    // 5 and 3 are booked
-    // 1,2,4,6,7,8,9,10 available
-    expect(availableRooms.length).to.equal(8);
+    expect(availableRooms.length).to.equal(18);
   });
 });
