@@ -1,4 +1,5 @@
 import DOMupdates from './DOMupdates';
+import Hotel from './Hotel';
 
 class Customer {
   constructor(id, name, allBookings, allRoomServices) {
@@ -10,14 +11,12 @@ class Customer {
     this.customerRoomServices = [];
   }
   
-  findCurrentCustomerBookings() {
-    this.customerBookings = this.allBookings.filter(booking => booking.userID === this.id);
-    // console.log('in customer findBookings', this.customerBookings)
+  findCurrentCustomerBookings(currentCustomer) {
+    this.customerBookings = this.allBookings.filter(booking => booking.userID === currentCustomer.id);
   }
   
-  findCurrentCustomerRoomServices() {
-    this.customerRoomServices = this.allRoomServices.filter(order => order.userID === this.id);
-    // console.log('in customer findRoomServices', this.customerRoomServices)
+  findCurrentCustomerRoomServices(currentCustomer) {
+    this.customerRoomServices = this.allRoomServices.filter(order => order.userID === currentCustomer.id);
   }
 }
 
