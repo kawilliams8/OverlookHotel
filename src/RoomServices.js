@@ -7,6 +7,7 @@ class RoomServices {
     this.food = food;
     this.totalCost = totalCost;
   }
+
 }
 
 export default RoomServices;

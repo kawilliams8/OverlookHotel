@@ -147,11 +147,11 @@ let sampleBookings = [
   {
     userID: 90,
     date: "2019/10/17",
-    roomNumber: 42
+    roomNumber: 25
   },
   {
     userID: 59,
-    date: "2019/10/11",
+    date: "2019/10/17",
     roomNumber: 22
   },
   {
@@ -191,8 +191,8 @@ let sampleBookings = [
   },
   {
     userID: 26,
-    date: "2019/10/10",
-    roomNumber: 24
+    date: "2019/10/17",
+    roomNumber: 14
   },
   {
     userID: 77,

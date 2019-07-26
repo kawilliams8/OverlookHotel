@@ -6,6 +6,7 @@ class Bookings {
     this.date = date;
     this.roomNumber = roomNumber;
   }
+
 }
 
 export default Bookings;

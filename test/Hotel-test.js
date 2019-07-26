@@ -52,5 +52,18 @@ describe('Hotel', () => {
     expect(hotel.roomServices.length).to.equal(51);
     expect(hotel.roomServices[50].food).to.equal('toast');
     expect(hotel.roomServices[50].totalCost).to.equal(150.00);
+  });
+
+  it('should calculate a given date\'s occupancy percentage', () => {
+    let occupancy = hotel.calculateOccupancy('2019/10/17');
+    expect(occupancy).to.equal(.16);
+  });
+
+  it('should calculate a day\'s total revenue from bookings and room service orders', () => {
+    let revenue = hotel.calculateRevenue('2019/10/17');
+    // 916.81 from rooms
+    //12.32 from room services
+    //929.13 total on 2019/10/17
+    expect(revenue).to.equal(929.13);
   })
 });
