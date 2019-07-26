@@ -5,11 +5,12 @@ import RoomServices from './RoomServices';
 
 class Hotel {
   constructor(users, rooms, bookings, roomServices) {
-    this.customers = users.map(user => new Customer(user.id, user.name)) || [];
     this.rooms = rooms; 
     this.bookings = bookings.map(booking => new Bookings(booking.userID, booking.date, booking.roomNumber)) || [];
     this.roomServices = roomServices.map(roomService => new RoomServices(roomService.userID, roomService.date, roomService.food, roomService.totalCost)) || [];
-    this.today;
+    this.customers = users.map(user => new Customer(user.id, user.name, this.bookings, this.roomServices)) || [];
+    this.today = '';
+    this.currentCustomer = {};
   }
 
   getTodayDate() {
@@ -29,17 +30,18 @@ class Hotel {
 
   addNewCustomer(name) {
     let id = this.customers.length + 1;
-    let newCustomer = new Customer(id, name);
+    let newCustomer = new Customer(id, name, this.bookings, this.roomServices);
+    this.currentCustomer = newCustomer;
     this.customers.push(newCustomer);
   }
 
-  addNewBooking(userID, date, roomNumber) {
-    let newBooking = new Bookings(userID, date, roomNumber);
+  addNewBooking(date, roomNumber) {
+    let newBooking = new Bookings(this.currentCustomer.id, date, roomNumber);
     this.bookings.push(newBooking);
   }
 
-  addNewRoomService(id, date, food, cost) {
-    let service1 = new RoomServices(id, date, food, cost);
+  addNewRoomService(date, food, cost) {
+    let service1 = new RoomServices(this.currentCustomer.id, date, food, cost);
     this.roomServices.push(service1);
   }
 
@@ -54,13 +56,32 @@ class Hotel {
       acc += this.rooms.find(room => room.number === roomNum).costPerNight;
       return acc;
     }, 0);
+
     let ordersForDate = this.roomServices.filter(order => order.date === date);
     let roomServiceRevenue = ordersForDate.reduce((acc, roomService) => {
       acc += roomService.totalCost;
       return acc;
     }, 0);
-    return bookingsRevenue + roomServiceRevenue;
+
+    return +(bookingsRevenue + roomServiceRevenue).toFixed(2)
   }
+
+  listAvailableRooms(date) {
+    let bookedRoomNumbers = this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
+    //3,5 are booked
+    let result = bookedRoomNumbers.reduce((acc, roomNum) => {
+      this.rooms.forEach(room => {
+        if (room.number !== roomNum ) {
+          acc.push(room);
+        };
+
+      });
+    return acc;
+  }, []);
+
+  console.log(result)
+}
+
 }
 
 export default Hotel;

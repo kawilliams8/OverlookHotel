@@ -7,6 +7,10 @@ class Bookings {
     this.roomNumber = roomNumber;
   }
 
+  //possibly pass all customers, all orders, all bookings?
+
+  //find all sandwiches for the 'menu' method
+
 }
 
 export default Bookings;

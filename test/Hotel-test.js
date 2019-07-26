@@ -32,38 +32,45 @@ describe('Hotel', () => {
   
   it('should add a new customer, with an id and name, to the existing customers', () => {
     expect(hotel.customers.length).to.equal(15);
-    hotel.addNewCustomer('New Customer');
+    hotel.addNewCustomer('Jane Smith');
     expect(hotel.customers.length).to.equal(16);
     expect(hotel.customers[15].id).to.equal(16);
-    expect(hotel.customers[15].name).to.equal('New Customer');
+    expect(hotel.customers[15].name).to.equal('Jane Smith');
   });
 
-  it('should add a new booking, with an id, date, and room number, to the existing bookings', () => {
-    expect(hotel.bookings.length).to.equal(50);
-    hotel.addNewBooking(2, "2019/09/24", 30);
-    expect(hotel.bookings.length).to.equal(51);
-    expect(hotel.bookings[50].userID).to.equal(2);
-    expect(hotel.bookings[50].roomNumber).to.equal(30);
+  it('should add a new booking, for the current customer, to the existing bookings', () => {
+    hotel.currentCustomer = { id: 7, name: "Josianne Huels" }
+    expect(hotel.bookings.length).to.equal(100);
+    hotel.addNewBooking("2019/09/24", 30);
+    expect(hotel.bookings.length).to.equal(101);
+    expect(hotel.bookings[100].userID).to.equal(7);
+    expect(hotel.bookings[100].roomNumber).to.equal(30);
   });
 
-  it('should add a new room service order, with an id, date, food, and cost, to the existing room service orders', () => {
+  it('should add a new room service order, for the current customer, to the existing orders', () => {
+    hotel.currentCustomer = { id: 12, name: "Leland Roberts" }
     expect(hotel.roomServices.length).to.equal(50);
-    hotel.addNewRoomService(10, "2019/09/24", 'toast', 150.00);
+    hotel.addNewRoomService("2019/09/24", 'peanut butter and jelly sandwich', 150.00);
     expect(hotel.roomServices.length).to.equal(51);
-    expect(hotel.roomServices[50].food).to.equal('toast');
+    expect(hotel.roomServices[50].userID).to.equal(12);
+    expect(hotel.roomServices[50].food).to.equal('peanut butter and jelly sandwich');
     expect(hotel.roomServices[50].totalCost).to.equal(150.00);
   });
 
   it('should calculate a given date\'s occupancy percentage', () => {
     let occupancy = hotel.calculateOccupancy('2019/10/17');
-    expect(occupancy).to.equal(.16);
+    expect(occupancy).to.equal(.28);
   });
 
-  it('should calculate a day\'s total revenue from bookings and room service orders', () => {
+  it.skip('should calculate a day\'s total revenue from bookings and room service orders', () => {
     let revenue = hotel.calculateRevenue('2019/10/17');
-    // 916.81 from rooms
-    //12.32 from room services
-    //929.13 total on 2019/10/17
-    expect(revenue).to.equal(929.13);
-  })
+    expect(revenue).to.equal(898.52);
+  });
+
+  it.skip('should list out the available rooms for a given date', () => {
+    let availableRooms = hotel.listAvailableRooms('2019/10/17');
+    // 5 and 3 are booked
+    // 1,2,4,6,7,8,9,10 available
+    expect(availableRooms.length).to.equal(8);
+  });
 });

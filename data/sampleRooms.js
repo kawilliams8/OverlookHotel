@@ -198,7 +198,7 @@ let sampleRooms = [
     bedSize: "queen",
     numBeds: 1,
     costPerNight: 307.49
-  }
+  } 
 ]
 
 export default sampleRooms;
