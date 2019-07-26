@@ -497,7 +497,7 @@ let sampleBookings = [
   {
     userID: 78,
     date: "2019/10/17",
-    roomNumber: 31
+    roomNumber: 20
   }
 ]
 

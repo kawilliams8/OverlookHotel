@@ -62,9 +62,9 @@ describe('Hotel', () => {
     expect(occupancy).to.equal(.28);
   });
 
-  it.skip('should calculate a day\'s total revenue from bookings and room service orders', () => {
+  it('should calculate a day\'s total revenue from bookings and room service orders', () => {
     let revenue = hotel.calculateRevenue('2019/10/17');
-    expect(revenue).to.equal(898.52);
+    expect(revenue).to.equal(1777.88);
   });
 
   it.skip('should list out the available rooms for a given date', () => {

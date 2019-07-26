@@ -56,7 +56,6 @@ class Hotel {
       acc += this.rooms.find(room => room.number === roomNum).costPerNight;
       return acc;
     }, 0);
-
     let ordersForDate = this.roomServices.filter(order => order.date === date);
     let roomServiceRevenue = ordersForDate.reduce((acc, roomService) => {
       acc += roomService.totalCost;
