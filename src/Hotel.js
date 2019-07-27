@@ -99,10 +99,7 @@ class Hotel {
       !acc[booking.date] ? acc[booking.date] = 1 : acc[booking.date]++;
       return acc;
     }, {});
-    console.log('bookedDates :', bookedDates);
-    let lowCount = Object.values(bookedDates).find(date => bookedDates[date] === Math.min(...Object.values(bookedDates)));
-
-    console.log(lowCount)
+    let lowCount = Object.values(bookedDates).sort((a, b) => b - a).pop();
     return Object.keys(bookedDates).filter(date => bookedDates[date] === Math.min(...Object.values(bookedDates)));
   }
 }
