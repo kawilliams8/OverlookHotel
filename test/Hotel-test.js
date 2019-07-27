@@ -78,6 +78,12 @@ describe('Hotel', () => {
     expect(todayRoomServices.length).to.be.a('number');
   });
 
+  it('should create a list of all room service orders for a given date', () => {
+    let roomServices = hotel.findRoomServicesGivenDate("2019/09/25");
+    expect(roomServices.length).to.equal(1);
+    expect(roomServices[0].totalCost).to.equal(11.15);
+  });
+
   it('should create a list of all today\'s room bookings', () => {
     let todayBookings = hotel.findTodayBookings();
     expect(todayBookings.length).to.be.a('number');

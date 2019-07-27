@@ -81,6 +81,11 @@ class Hotel {
     return todayRoomServices;
   }
 
+  findRoomServicesGivenDate(date) {
+    let roomServices = this.roomServices.filter(order => order.date === date);
+    return roomServices;
+  }
+
   findTodayBookings() {
     let todayBookings = this.bookings.filter(booking => booking.date === this.searchDate);
     return todayBookings;
@@ -102,6 +107,7 @@ class Hotel {
     let lowCount = Object.values(bookedDates).sort((a, b) => b - a).pop();
     return Object.keys(bookedDates).filter(date => bookedDates[date] === Math.min(...Object.values(bookedDates)));
   }
+
 }
 
 export default Hotel;
