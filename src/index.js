@@ -3,6 +3,7 @@ import './css/base.scss';
 
 // import all images
 import './images/spinner.gif';
+import './images/Overlook_background.png';
 
 import Hotel from '../src/Hotel';
 
