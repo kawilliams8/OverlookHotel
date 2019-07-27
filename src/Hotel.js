@@ -112,6 +112,13 @@ class Hotel {
     return Object.keys(bookedDates).filter(date => bookedDates[date] === Math.min(...Object.values(bookedDates)));
   }
 
+  makeMenu() {
+    return this.roomServices.reduce((acc, order) => {
+      !acc.includes({ food: order.food, price: order.totalCost }) ?
+      acc.push({food: order.food, price: order.totalCost}) : false;
+      return acc;
+    }, []).sort((a, b) => a.price - b.price);
+  }
 }
 
 export default Hotel;

@@ -105,4 +105,9 @@ describe('Hotel', () => {
     let unpopularDate = hotel.findUnpopularBookingDate();
     expect(unpopularDate).to.be.an('array');
   });
-});
+
+  it('should make a menu to make room service orders', () => {
+    let menu = hotel.makeMenu();
+    expect(menu.length).to.equal(50);
+  })
+})
