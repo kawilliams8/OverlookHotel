@@ -3,22 +3,22 @@ const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
 
-import sampleUsers from '../data/sampleUsers';
-import sampleBookings from '../data/sampleBookings';
-import sampleRooms from '../data/sampleRooms';
-import sampleRoomServices from '../data/sampleRoomServices';
+import mockUsers from '../data/sampleUsers';
+import mockBookings from '../data/sampleBookings';
+import mockRooms from '../data/sampleRooms';
+import mockRoomServices from '../data/sampleRoomServices';
 
 import Hotel from '../src/Hotel';
-import Customer from '../src/Customer';
 import DOMupdates from '../src/DOMupdates';
 
-chai.spy.on(DOMupdates, [], () => true)
+chai.spy.on(DOMupdates, [], () => true);
 
 describe('Customer', () => {
 
   let hotel;
   beforeEach(() => {
-    hotel = new Hotel(sampleUsers, sampleRooms, sampleBookings, sampleRoomServices);
+    hotel = new Hotel(mockUsers, mockRooms, mockBookings, mockRoomServices);
+    hotel.getTodayDate();
     hotel.addNewCustomer('Jane Smith');
   });
 
@@ -51,9 +51,20 @@ describe('Customer', () => {
     hotel.addNewBooking("2019/10/22", 1);
     hotel.addNewBooking("2019/10/23", 1);
     hotel.addNewBooking("2019/10/24", 1);
-    hotel.currentCustomer.findCurrentCustomerBookings(hotel.currentCustomer);
+    hotel.currentCustomer.findCurrCustBookings(hotel.currentCustomer);
     expect(hotel.currentCustomer.customerBookings.length).to.deep.equal(3);
     expect(hotel.currentCustomer.customerBookings[1].roomNumber).to.equal(1);
+  });
+
+  it('should determine if the current customer has a booking today', () => {
+    expect(hotel.currentCustomer.customerBookings).to.deep.equal([]);
+    hotel.addNewBooking("2019/10/22", 1);
+    hotel.addNewBooking("2019/10/23", 1);
+    hotel.addNewBooking("2019/10/24", 1);
+    hotel.currentCustomer.findCurrCustBookings(hotel.currentCustomer);
+    expect(hotel.currentCustomer.customerBookings.length).to.deep.equal(3);
+    let bookedToday = hotel.currentCustomer.findCurrCustBookingsToday(hotel.searchDate);
+    expect(bookedToday).to.equal(false);
   });
 
   it('should find all of the current customer\'s room services', () => {
@@ -61,7 +72,7 @@ describe('Customer', () => {
     hotel.addNewRoomService("2019/10/22", 'meatball sub', 12.50);
     hotel.addNewRoomService("2019/10/23", 'turkey sandwich', 12.50);
     hotel.addNewRoomService("2019/10/24", 'Handcrafted Cotton Sandwich', 12.50);
-    hotel.currentCustomer.findCurrentCustomerRoomServices(hotel.currentCustomer);
+    hotel.currentCustomer.findCurrCustRoomServices(hotel.currentCustomer);
     expect(hotel.currentCustomer.customerRoomServices.length).to.deep.equal(3);
     expect(hotel.currentCustomer.customerRoomServices[1].food).to.equal('turkey sandwich');
   });
@@ -70,8 +81,8 @@ describe('Customer', () => {
     hotel.addNewRoomService("2019/10/22", 'meatball sub', 12);
     hotel.addNewRoomService("2019/10/22", 'turkey sandwich', 13);
     hotel.addNewRoomService("2019/10/23", 'Handcrafted Cotton Sandwich', 14);
-    hotel.currentCustomer.findCurrentCustomerRoomServices(hotel.currentCustomer);
-    let bill = hotel.currentCustomer.findRevenueCurrentCustomerRoomServicesGivenDay('2019/10/22');
+    hotel.currentCustomer.findCurrCustRoomServices(hotel.currentCustomer);
+    let bill = hotel.currentCustomer.findRevCurrCustRoomServicesGivenDay('2019/10/22');
     expect(bill).to.equal(25);
   });
 
@@ -79,8 +90,8 @@ describe('Customer', () => {
     hotel.addNewRoomService("2019/10/22", 'meatball sub', 12);
     hotel.addNewRoomService("2019/10/22", 'turkey sandwich', 13);
     hotel.addNewRoomService("2019/10/23", 'Handcrafted Cotton Sandwich', 14);
-    hotel.currentCustomer.findCurrentCustomerRoomServices(hotel.currentCustomer);
-    let bill = hotel.currentCustomer.findRevenueCurrentCustomerRoomServiceForever();
+    hotel.currentCustomer.findCurrCustRoomServices(hotel.currentCustomer);
+    let bill = hotel.currentCustomer.findRevCurrCustRoomServiceForever();
     expect(bill).to.equal(39);
   })
 });

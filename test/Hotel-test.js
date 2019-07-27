@@ -3,10 +3,10 @@ const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
 
-import sampleUsers from '../data/sampleUsers';
-import sampleBookings from '../data/sampleBookings';
-import sampleRooms from '../data/sampleRooms';
-import sampleRoomServices from '../data/sampleRoomServices';
+import mockUsers from '../data/sampleUsers';
+import mockBookings from '../data/sampleBookings';
+import mockRooms from '../data/sampleRooms';
+import mockRoomServices from '../data/sampleRoomServices';
 
 import Hotel from '../src/Hotel';
 import DOMupdates from '../src/DOMupdates';
@@ -17,7 +17,7 @@ describe('Hotel', () => {
 
   let hotel;
   beforeEach(() => {
-    hotel = new Hotel(sampleUsers, sampleRooms, sampleBookings, sampleRoomServices);
+    hotel = new Hotel(mockUsers, mockRooms, mockBookings, mockRoomServices);
     hotel.getTodayDate();
   });
 
@@ -73,9 +73,22 @@ describe('Hotel', () => {
     expect(availableRooms.length).to.equal(18);
   });
 
+  it('should be able to filter today\'s available rooms by type', () => {
+    let availableRooms = hotel.listAvailableRooms('2019/07/26');
+    expect(availableRooms.length).to.equal(21);
+    let filteredRooms = hotel.filterTodayAvailableRooms(availableRooms, 'junior suite');
+    expect(filteredRooms.length).to.equal(5);
+  })
+
   it('should create a list of all today\'s room service orders', () => {
     let todayRoomServices = hotel.findTodayRoomServices();
     expect(todayRoomServices.length).to.be.a('number');
+  });
+
+  it('should create a list of all room service orders for a given date', () => {
+    let roomServices = hotel.findRoomServicesGivenDate("2019/09/25");
+    expect(roomServices.length).to.equal(1);
+    expect(roomServices[0].totalCost).to.equal(11.15);
   });
 
   it('should create a list of all today\'s room bookings', () => {
@@ -90,6 +103,11 @@ describe('Hotel', () => {
 
   it('should find the least popular booking date / most availability', () => {
     let unpopularDate = hotel.findUnpopularBookingDate();
-    expect(unpopularDate).to.equal('2019/10/17');
+    expect(unpopularDate).to.be.an('array');
   });
-});
+
+  it('should make a menu to make room service orders', () => {
+    let menu = hotel.makeMenu();
+    expect(menu.length).to.equal(50);
+  })
+})

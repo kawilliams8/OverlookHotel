@@ -76,9 +76,18 @@ class Hotel {
     }).sort((a, b) => a.number - b.number)
   }
 
+  filterTodayAvailableRooms(availableRooms, roomType) {
+    return availableRooms.filter(room => room.roomType === roomType);
+  }
+
   findTodayRoomServices() {
     let todayRoomServices = this.roomServices.filter(order => order.date === this.searchDate);
     return todayRoomServices;
+  }
+
+  findRoomServicesGivenDate(date) {
+    let roomServices = this.roomServices.filter(order => order.date === date);
+    return roomServices;
   }
 
   findTodayBookings() {
@@ -99,11 +108,16 @@ class Hotel {
       !acc[booking.date] ? acc[booking.date] = 1 : acc[booking.date]++;
       return acc;
     }, {});
-    console.log('bookedDates :', bookedDates);
-    let lowCount = Object.values(bookedDates).find(date => bookedDates[date] === Math.min(...Object.values(bookedDates)));
-
-    console.log(lowCount)
+    let lowCount = Object.values(bookedDates).sort((a, b) => b - a).pop();
     return Object.keys(bookedDates).filter(date => bookedDates[date] === Math.min(...Object.values(bookedDates)));
+  }
+
+  makeMenu() {
+    return this.roomServices.reduce((acc, order) => {
+      !acc.includes({ food: order.food, price: order.totalCost }) ?
+      acc.push({food: order.food, price: order.totalCost}) : false;
+      return acc;
+    }, []).sort((a, b) => a.price - b.price);
   }
 }
 

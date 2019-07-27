@@ -1,5 +1,3 @@
-import DOMupdates from './DOMupdates';
-
 class RoomServices {
   constructor(id, date, food, totalCost) {
     this.userID = id;
