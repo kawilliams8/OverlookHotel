@@ -3,23 +3,22 @@ const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
 
-import sampleUsers from '../data/sampleUsers';
-import sampleBookings from '../data/sampleBookings';
-import sampleRooms from '../data/sampleRooms';
-import sampleRoomServices from '../data/sampleRoomServices';
+import mockUsers from '../data/sampleUsers';
+import mockBookings from '../data/sampleBookings';
+import mockRooms from '../data/sampleRooms';
+import mockRoomServices from '../data/sampleRoomServices';
 
 import Hotel from '../src/Hotel';
-import Customer from '../src/Customer';
 import DOMupdates from '../src/DOMupdates';
 
-chai.spy.on(DOMupdates, [], () => true)
+chai.spy.on(DOMupdates, [], () => true);
 
 describe('Customer', () => {
 
   let hotel;
   beforeEach(() => {
-    hotel = new Hotel(sampleUsers, sampleRooms, sampleBookings, sampleRoomServices);
-    hotel.getTodayDate()
+    hotel = new Hotel(mockUsers, mockRooms, mockBookings, mockRoomServices);
+    hotel.getTodayDate();
     hotel.addNewCustomer('Jane Smith');
   });
 
