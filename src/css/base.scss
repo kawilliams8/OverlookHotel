@@ -24,13 +24,14 @@ html {
 }
 
 .splash {
-
+  
   &.splash-div {
-    background-color: $grey;
+    background-color: $orange;
+    border: 15px solid black;
     border-radius: 3px;
     display: flex;
     flex-direction: column;
-    height: 300px;
+    height: 400px;
     margin: 10% auto;
     width: 50%;
   }
