@@ -13,6 +13,10 @@ class Customer {
   findCurrCustBookings(currentCustomer) {
     this.customerBookings = this.allBookings.filter(booking => booking.userID === currentCustomer.id);
   }
+
+  findCurrCustBookingsToday(today) {
+    return this.customerBookings.some(booking => booking.date === today) ? true : false;
+  }
   
   findCurrCustRoomServices(currentCustomer) {
     this.customerRoomServices = this.allRoomServices.filter(order => order.userID === currentCustomer.id);

@@ -19,6 +19,7 @@ describe('Customer', () => {
   let hotel;
   beforeEach(() => {
     hotel = new Hotel(sampleUsers, sampleRooms, sampleBookings, sampleRoomServices);
+    hotel.getTodayDate()
     hotel.addNewCustomer('Jane Smith');
   });
 
@@ -54,6 +55,17 @@ describe('Customer', () => {
     hotel.currentCustomer.findCurrCustBookings(hotel.currentCustomer);
     expect(hotel.currentCustomer.customerBookings.length).to.deep.equal(3);
     expect(hotel.currentCustomer.customerBookings[1].roomNumber).to.equal(1);
+  });
+
+  it('should determine if the current customer has a booking today', () => {
+    expect(hotel.currentCustomer.customerBookings).to.deep.equal([]);
+    hotel.addNewBooking("2019/10/22", 1);
+    hotel.addNewBooking("2019/10/23", 1);
+    hotel.addNewBooking("2019/10/24", 1);
+    hotel.currentCustomer.findCurrCustBookings(hotel.currentCustomer);
+    expect(hotel.currentCustomer.customerBookings.length).to.deep.equal(3);
+    let bookedToday = hotel.currentCustomer.findCurrCustBookingsToday(hotel.searchDate);
+    expect(bookedToday).to.equal(false);
   });
 
   it('should find all of the current customer\'s room services', () => {
