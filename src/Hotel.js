@@ -76,6 +76,10 @@ class Hotel {
     }).sort((a, b) => a.number - b.number)
   }
 
+  filterTodayAvailableRooms(availableRooms, roomType) {
+    return availableRooms.filter(room => room.roomType === roomType);
+  }
+
   findTodayRoomServices() {
     let todayRoomServices = this.roomServices.filter(order => order.date === this.searchDate);
     return todayRoomServices;

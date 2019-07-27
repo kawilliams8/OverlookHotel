@@ -73,6 +73,13 @@ describe('Hotel', () => {
     expect(availableRooms.length).to.equal(18);
   });
 
+  it('should be able to filter today\'s available rooms by type', () => {
+    let availableRooms = hotel.listAvailableRooms('2019/07/26');
+    expect(availableRooms.length).to.equal(21);
+    let filteredRooms = hotel.filterTodayAvailableRooms(availableRooms, 'junior suite');
+    expect(filteredRooms.length).to.equal(5);
+  })
+
   it('should create a list of all today\'s room service orders', () => {
     let todayRoomServices = hotel.findTodayRoomServices();
     expect(todayRoomServices.length).to.be.a('number');
