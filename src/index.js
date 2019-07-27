@@ -25,15 +25,16 @@ Promise.all([usersData, roomsData, bookingsData, roomServicesData])
 
 setTimeout(() => {
   hotel = new Hotel(users.users, rooms.rooms, bookings.bookings, roomServices.roomServices);
+  hotel.getTodayDate();
 }, 400);
 
 $(document).ready(() => {
-  $('main').hide();
+  $('main, footer').hide();
 })
 
 $('.splash-button').on('click', () => {
-  $('main').delay(250).fadeIn(250);
-  $('.splash-div').fadeOut(250);
+  $('main, footer').delay(600).fadeIn(300);
+  $('.splash-div').fadeOut(300);
 })
 
 $(() =>  {

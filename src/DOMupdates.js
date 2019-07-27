@@ -3,7 +3,7 @@ import $ from 'jquery';
 const DOMupdates = {
 
   showToday(date) {
-    $('.today').text(date);
+    $('.header-today').text(date);
   }
 
 };

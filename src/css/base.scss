@@ -2,13 +2,16 @@ $primary-background: black;
 $orange: #DF5F18;
 $maroon: #981f24;
 $blue: #00FFFF;
-$grey: #F8F8F8;
+$grey: #dee4ef;
 $primary-font: 'Roboto', sans-serif;
 $secondary-font: 'Lato', sans-serif;
+
+//21, 26, 33, 41, 51, 64, 80
 
 *, *:before, *:after {
   box-sizing: border-box;
   font-family: $primary-font;
+  margin: 0;
 }
 
 html {
@@ -26,30 +29,72 @@ html {
   
   &.splash-div {
     background-color: $orange;
-    border: 15px solid black;
-    border-radius: 3px;
+    border: 26px solid black;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    height: 400px;
+    height: 410px;
     margin: 10% auto;
-    width: 50%;
+    width: 43%;
+  }
+
+  &.splash-h3 {
+    font-size: 33px;
+    letter-spacing: 3px;
+    line-height: 10px;
+    margin: auto;
   }
   
   &.splash-h2,
   &.splash-spinner {
     color: $blue;
     font-family: $primary-font;
-    font-size: 60px;
+    font-size: 61px;
     letter-spacing: 3px;
+    line-height: 10px;
     margin: auto;
   }
 
   &.splash-button {
+    border: 3px solid $maroon;
+    color: $maroon;
     font-size: 21px;
-    height: 50px;
+    height: 41px;
     letter-spacing: 3px;
     margin: auto;
     width: 33%;
+  }
+}
+
+main {
+    height: 100%;
+
+  & header {
+    background-color: $maroon;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    width: 100%;
+
+    & .header-div{
+      color: $grey;
+      width: 400px;
+    }
+
+    & .header-customer {
+      font-style: italic;
+    }
+  }
+
+  & h1 {
+    color: $grey;
+    font-size: 64px;
+    padding: 20px 0 0 20px;
+  }
+
+  & h2 {
+    font-size: 21px;
+    padding: 16px 20px 0 0;
   }
 }
 
@@ -75,28 +120,31 @@ html {
   z-index: 2;
 
   & li {
-    position: relative;
-    float: left;
-    color: #7f7d80;
     background: #fff;
-    border-right: 5px solid #eaeff7;
     border-top: 5px solid #eaeff7;
-    font-size: 10px;
-    text-transform: uppercase;
+    border-radius: 3px 3px 0 0;
+    border-right: 5px solid #eaeff7;
+    color: $maroon;
+    cursor: pointer;
+    float: left;
+    font-size: 16px;
     letter-spacing: 2.5px;
     padding: 13px 20px;
-    -webkit-transition: 0.3s;
+    position: relative;
+    text-transform: uppercase;
     transition: 0.3s;
-    cursor: pointer;
+    -webkit-transition: 0.3s;
   }
 
   & li:first-of-type {
     border-left: 5px solid #eaeff7;
+    border-radius: 3px 3px 0 0;
   }
 
   & li.active {
   color: #0f0615;
   border-color: #dee4ef;
+  border-radius: 3px 3px 0 0;
   }
 
   & li:after {
@@ -137,12 +185,13 @@ html {
 }
 
 .text {
-  display: none;
+  background: #fff;
   border: 5px solid #dee4ef;
-  margin: 0 0 60px 0;
+  display: none;
+  height: 600px;
+  margin: 0;
   padding: 45px;
   position: relative;
-  background: #fff;
 
   & p {
     margin: 0 0 25px 0;
@@ -154,6 +203,18 @@ html {
 
   & p:last-of-type {
     margin: 0;
+  }
+}
+
+footer {
+  background-color: black;
+  color: $maroon;
+  height: 100px;
+  margin: 0;
+
+  & p {
+    font-size: 21px;
+    text-align: center;
   }
 }
 
