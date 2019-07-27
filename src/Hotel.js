@@ -53,8 +53,8 @@ class Hotel {
   }
 
   calculateRevenue(date) {
-    let roomNumsForDate = this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
-    let bookingsRevenue = roomNumsForDate.reduce((acc, roomNum) => {
+    let roomNums = this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
+    let bookingsRevenue = roomNums.reduce((acc, roomNum) => {
       acc += this.rooms.find(room => room.number === roomNum).costPerNight;
       return acc;
     }, 0);
@@ -68,25 +68,16 @@ class Hotel {
   }
 
   listAvailableRooms(date) {
-    let bookedRoomNumbers = this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
+    let bookedRooms = this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
     return this.rooms.filter((room) => {
-      if ((bookedRoomNumbers.indexOf(room.number) < 0)) {
+      if ((bookedRooms.indexOf(room.number) < 0)) {
         return room;
       }
-    }).sort((a,b) => a.number - b.number)
+    }).sort((a, b) => a.number - b.number)
   }
 
   findTodayRoomServices() {
     let todayRoomServices = this.roomServices.filter(order => order.date === this.searchDate);
-    // if (todayOrders.length > 0) { 
-    //   todayOrders.forEach(order => {
-    //     let customer = this.userData.find(customer => customer.id === order.userID);
-    //     let food = order.food;
-    //     let cost = order.totalCost;
-    //   })
-    // } else {
-    //   // DOMupdates.displayTodayNoOrders();
-    // }
     return todayRoomServices;
   }
 
@@ -97,16 +88,11 @@ class Hotel {
 
   findPopularBookingDate() {
     let bookedDates = this.bookings.reduce((acc, booking) => {
-      if (acc.includes({date: [booking.date]})) {
-        acc.push({date: booking.date, count: 1});
-      } else {
-        console.log('in else');
-      }
+      !acc[booking.date] ? acc[booking.date] = 1 : acc[booking.date]++;
       return acc;
-    }, []).sort((a,b) => b.count - a.count);
-    console.log('bookedDates :', bookedDates);
-
-}
+    }, {});
+    return Object.keys(bookedDates).find(date => bookedDates[date] === Math.max(...Object.values(bookedDates)));
+  }
 }
 
 export default Hotel;
