@@ -1,7 +1,7 @@
 import DOMupdates from './DOMupdates';
 
 class RoomServices {
-  constructor(id, date, food, totalCost) {
+  constructor(id, date, food, totalCost, allBookings, allRooms) {
     this.userID = id;
     this.date = date;
     this.food = food;

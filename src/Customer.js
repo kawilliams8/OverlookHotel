@@ -1,5 +1,4 @@
-import DOMupdates from './DOMupdates';
-import Hotel from './Hotel';
+// import DOMupdates from './DOMupdates';
 
 class Customer {
   constructor(id, name, allBookings, allRoomServices) {
@@ -11,15 +10,15 @@ class Customer {
     this.customerRoomServices = [];
   }
   
-  findCurrentCustomerBookings(currentCustomer) {
+  findCurrCustBookings(currentCustomer) {
     this.customerBookings = this.allBookings.filter(booking => booking.userID === currentCustomer.id);
   }
   
-  findCurrentCustomerRoomServices(currentCustomer) {
+  findCurrCustRoomServices(currentCustomer) {
     this.customerRoomServices = this.allRoomServices.filter(order => order.userID === currentCustomer.id);
   }
 
-  findRevenueCurrentCustomerRoomServicesGivenDay(date) {
+  findRevCurrCustRoomServicesGivenDay(date) {
     let roomServices = this.customerRoomServices.filter(order => order.date === date);
     return roomServices.reduce((acc, order) => {
       acc += order.totalCost;
@@ -27,7 +26,7 @@ class Customer {
     }, 0);
   }
 
-  findRevenueCurrentCustomerRoomServiceForever() {
+  findRevCurrCustRoomServiceForever() {
     return this.customerRoomServices.reduce((acc, order) => {
       acc += order.totalCost;
       return acc;

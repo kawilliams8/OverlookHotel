@@ -51,7 +51,7 @@ describe('Customer', () => {
     hotel.addNewBooking("2019/10/22", 1);
     hotel.addNewBooking("2019/10/23", 1);
     hotel.addNewBooking("2019/10/24", 1);
-    hotel.currentCustomer.findCurrentCustomerBookings(hotel.currentCustomer);
+    hotel.currentCustomer.findCurrCustBookings(hotel.currentCustomer);
     expect(hotel.currentCustomer.customerBookings.length).to.deep.equal(3);
     expect(hotel.currentCustomer.customerBookings[1].roomNumber).to.equal(1);
   });
@@ -61,7 +61,7 @@ describe('Customer', () => {
     hotel.addNewRoomService("2019/10/22", 'meatball sub', 12.50);
     hotel.addNewRoomService("2019/10/23", 'turkey sandwich', 12.50);
     hotel.addNewRoomService("2019/10/24", 'Handcrafted Cotton Sandwich', 12.50);
-    hotel.currentCustomer.findCurrentCustomerRoomServices(hotel.currentCustomer);
+    hotel.currentCustomer.findCurrCustRoomServices(hotel.currentCustomer);
     expect(hotel.currentCustomer.customerRoomServices.length).to.deep.equal(3);
     expect(hotel.currentCustomer.customerRoomServices[1].food).to.equal('turkey sandwich');
   });
@@ -70,8 +70,8 @@ describe('Customer', () => {
     hotel.addNewRoomService("2019/10/22", 'meatball sub', 12);
     hotel.addNewRoomService("2019/10/22", 'turkey sandwich', 13);
     hotel.addNewRoomService("2019/10/23", 'Handcrafted Cotton Sandwich', 14);
-    hotel.currentCustomer.findCurrentCustomerRoomServices(hotel.currentCustomer);
-    let bill = hotel.currentCustomer.findRevenueCurrentCustomerRoomServicesGivenDay('2019/10/22');
+    hotel.currentCustomer.findCurrCustRoomServices(hotel.currentCustomer);
+    let bill = hotel.currentCustomer.findRevCurrCustRoomServicesGivenDay('2019/10/22');
     expect(bill).to.equal(25);
   });
 
@@ -79,8 +79,8 @@ describe('Customer', () => {
     hotel.addNewRoomService("2019/10/22", 'meatball sub', 12);
     hotel.addNewRoomService("2019/10/22", 'turkey sandwich', 13);
     hotel.addNewRoomService("2019/10/23", 'Handcrafted Cotton Sandwich', 14);
-    hotel.currentCustomer.findCurrentCustomerRoomServices(hotel.currentCustomer);
-    let bill = hotel.currentCustomer.findRevenueCurrentCustomerRoomServiceForever();
+    hotel.currentCustomer.findCurrCustRoomServices(hotel.currentCustomer);
+    let bill = hotel.currentCustomer.findRevCurrCustRoomServiceForever();
     expect(bill).to.equal(39);
   })
 });
