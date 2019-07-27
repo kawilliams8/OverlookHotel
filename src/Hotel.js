@@ -93,6 +93,18 @@ class Hotel {
     }, {});
     return Object.keys(bookedDates).find(date => bookedDates[date] === Math.max(...Object.values(bookedDates)));
   }
+
+  findUnpopularBookingDate() {
+    let bookedDates = this.bookings.reduce((acc, booking) => {
+      !acc[booking.date] ? acc[booking.date] = 1 : acc[booking.date]++;
+      return acc;
+    }, {});
+    console.log('bookedDates :', bookedDates);
+    let lowCount = Object.values(bookedDates).find(date => bookedDates[date] === Math.min(...Object.values(bookedDates)));
+
+    console.log(lowCount)
+    return Object.keys(bookedDates).filter(date => bookedDates[date] === Math.min(...Object.values(bookedDates)));
+  }
 }
 
 export default Hotel;

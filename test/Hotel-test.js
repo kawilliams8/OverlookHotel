@@ -85,6 +85,11 @@ describe('Hotel', () => {
 
   it('should find the most popular booking date', () => {
     let popularDate = hotel.findPopularBookingDate();
-    expect(popularDate).to.equal('2019/10/17')
-  })
+    expect(popularDate).to.equal('2019/10/17');
+  });
+
+  it('should find the least popular booking date / most availability', () => {
+    let unpopularDate = hotel.findUnpopularBookingDate();
+    expect(unpopularDate).to.equal('2019/10/17');
+  });
 });
