@@ -18,6 +18,7 @@ describe('Hotel', () => {
   let hotel;
   beforeEach(() => {
     hotel = new Hotel(sampleUsers, sampleRooms, sampleBookings, sampleRoomServices);
+    hotel.getTodayDate();
   });
 
   it('should be a function which instantiates an instance of Hotel', () => {
@@ -71,4 +72,14 @@ describe('Hotel', () => {
     let availableRooms = hotel.listAvailableRooms('2019/10/17');
     expect(availableRooms.length).to.equal(18);
   });
+
+  it('should create a list of all today\'s room service orders', () => {
+    let todayRoomServices = hotel.findTodayRoomServices();
+    expect(todayRoomServices.length).to.equal(3);
+  });
+
+  it ('should create a list of all today\'s room bookings', () => {
+    let todayBookings = hotel.findTodayBookings();
+    expect(todayBookings.length).to.equal(4);
+  })
 });

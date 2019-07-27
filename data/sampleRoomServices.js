@@ -283,19 +283,19 @@ let sampleRoomServices = [
   },
   {
     userID: 13,
-    date: "2019/10/22",
+    date: "2019/07/26",
     food: "Small Metal Sandwich",
     totalCost: 22.75
   },
   {
     userID: 3,
-    date: "2019/10/09",
+    date: "2019/07/26",
     food: "Gorgeous Soft Sandwich",
     totalCost: 6.65
   },
   {
     userID: 4,
-    date: "2019/09/29",
+    date: "2019/07/26",
     food: "Sleek Metal Sandwich",
     totalCost: 11.61
   }

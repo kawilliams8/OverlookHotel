@@ -18,6 +18,11 @@ class Customer {
   findCurrentCustomerRoomServices(currentCustomer) {
     this.customerRoomServices = this.allRoomServices.filter(order => order.userID === currentCustomer.id);
   }
+
+  findCurrentCustomerRevenue() {
+    //breakdown of dates and dollar amounts for room service
+    //{dates: [], dollars: []}
+  }
 }
 
 export default Customer;

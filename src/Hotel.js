@@ -9,6 +9,7 @@ class Hotel {
     this.bookings = bookings.map(booking => new Bookings(booking.userID, booking.date, booking.roomNumber)) || [];
     this.roomServices = roomServices.map(roomService => new RoomServices(roomService.userID, roomService.date, roomService.food, roomService.totalCost)) || [];
     this.customers = users.map(user => new Customer(user.id, user.name, this.bookings, this.roomServices)) || [];
+    this.searchDate = '';
     this.today = '';
     this.currentCustomer = {};
   }
@@ -24,6 +25,7 @@ class Hotel {
     if (mm < 10) {
       mm = '0' + mm;
     }
+    this.searchDate = yyyy + '/' + mm + '/' + dd; 
     this.today = mm + '/' + dd + '/' + yyyy;
     DOMupdates.showToday(this.today);
   }
@@ -72,7 +74,26 @@ class Hotel {
         return room;
       }
     }).sort((a,b) => a.number - b.number)
-}
+  }
+
+  findTodayRoomServices() {
+    let todayRoomServices = this.roomServices.filter(order => order.date === this.searchDate);
+    // if (todayOrders.length > 0) { 
+    //   todayOrders.forEach(order => {
+    //     let customer = this.userData.find(customer => customer.id === order.userID);
+    //     let food = order.food;
+    //     let cost = order.totalCost;
+    //   })
+    // } else {
+    //   // DOMupdates.displayTodayNoOrders();
+    // }
+    return todayRoomServices;
+  }
+
+  findTodayBookings() {
+    let todayBookings = this.bookings.filter(booking => booking.date === this.searchDate);
+    return todayBookings;
+  }
 
 }
 
