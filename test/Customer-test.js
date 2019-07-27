@@ -65,4 +65,22 @@ describe('Customer', () => {
     expect(hotel.currentCustomer.customerRoomServices.length).to.deep.equal(3);
     expect(hotel.currentCustomer.customerRoomServices[1].food).to.equal('turkey sandwich');
   });
+
+  it('should calculate the current customer\'s total room service bill for a given date', () => {
+    hotel.addNewRoomService("2019/10/22", 'meatball sub', 12);
+    hotel.addNewRoomService("2019/10/22", 'turkey sandwich', 13);
+    hotel.addNewRoomService("2019/10/23", 'Handcrafted Cotton Sandwich', 14);
+    hotel.currentCustomer.findCurrentCustomerRoomServices(hotel.currentCustomer);
+    let bill = hotel.currentCustomer.findRevenueCurrentCustomerRoomServicesGivenDay('2019/10/22');
+    expect(bill).to.equal(25);
+  });
+
+  it('should calculate the current customer\'s total room service bill for all days', () => {
+    hotel.addNewRoomService("2019/10/22", 'meatball sub', 12);
+    hotel.addNewRoomService("2019/10/22", 'turkey sandwich', 13);
+    hotel.addNewRoomService("2019/10/23", 'Handcrafted Cotton Sandwich', 14);
+    hotel.currentCustomer.findCurrentCustomerRoomServices(hotel.currentCustomer);
+    let bill = hotel.currentCustomer.findRevenueCurrentCustomerRoomServicForever();
+    expect(bill).to.equal(39);
+  })
 });

@@ -19,10 +19,21 @@ class Customer {
     this.customerRoomServices = this.allRoomServices.filter(order => order.userID === currentCustomer.id);
   }
 
-  findCurrentCustomerRevenue() {
-    //breakdown of dates and dollar amounts for room service
-    //{dates: [], dollars: []}
+  findRevenueCurrentCustomerRoomServicesGivenDay(date) {
+    let roomServices = this.customerRoomServices.filter(order => order.date === date);
+    return roomServices.reduce((acc, order) => {
+      acc += order.totalCost;
+      return acc;
+    }, 0);
   }
+
+  findRevenueCurrentCustomerRoomServicForever() {
+    return this.customerRoomServices.reduce((acc, order) => {
+      acc += order.totalCost;
+      return acc;
+    }, 0);
+  }
+
 }
 
 export default Customer;
