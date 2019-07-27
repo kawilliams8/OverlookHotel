@@ -95,6 +95,18 @@ class Hotel {
     return todayBookings;
   }
 
+  findPopularBookingDate() {
+    let bookedDates = this.bookings.reduce((acc, booking) => {
+      if (acc.includes({date: [booking.date]})) {
+        acc.push({date: booking.date, count: 1});
+      } else {
+        console.log('in else');
+      }
+      return acc;
+    }, []).sort((a,b) => b.count - a.count);
+    console.log('bookedDates :', bookedDates);
+
+}
 }
 
 export default Hotel;

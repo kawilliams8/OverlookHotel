@@ -78,8 +78,13 @@ describe('Hotel', () => {
     expect(todayRoomServices.length).to.equal(3);
   });
 
-  it ('should create a list of all today\'s room bookings', () => {
+  it('should create a list of all today\'s room bookings', () => {
     let todayBookings = hotel.findTodayBookings();
     expect(todayBookings.length).to.equal(4);
+  });
+
+  it('should find the most popular booking date', () => {
+    let popularDate = hotel.findPopularBookingDate();
+    expect(popularDate).to.equal()
   })
 });

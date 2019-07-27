@@ -27,7 +27,7 @@ class Customer {
     }, 0);
   }
 
-  findRevenueCurrentCustomerRoomServicForever() {
+  findRevenueCurrentCustomerRoomServiceForever() {
     return this.customerRoomServices.reduce((acc, order) => {
       acc += order.totalCost;
       return acc;

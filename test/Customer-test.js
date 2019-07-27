@@ -80,7 +80,7 @@ describe('Customer', () => {
     hotel.addNewRoomService("2019/10/22", 'turkey sandwich', 13);
     hotel.addNewRoomService("2019/10/23", 'Handcrafted Cotton Sandwich', 14);
     hotel.currentCustomer.findCurrentCustomerRoomServices(hotel.currentCustomer);
-    let bill = hotel.currentCustomer.findRevenueCurrentCustomerRoomServicForever();
+    let bill = hotel.currentCustomer.findRevenueCurrentCustomerRoomServiceForever();
     expect(bill).to.equal(39);
   })
 });
