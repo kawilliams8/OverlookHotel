@@ -12,24 +12,23 @@ $secondary-font: 'Lato', sans-serif;
   box-sizing: border-box;
   font-family: $primary-font;
   margin: 0;
+  padding: 0;
 }
 
-html {
+body {
   background-color: $primary-background;
   background-image: url('../images/Overlook_background.png');
   background-position: right;
   background-size: auto;
-  box-sizing: border-box;
   font-weight: 400;
-  margin: 0;
-  padding: 0;
 }
 
 .splash {
   
   &.splash-div {
     background-color: $orange;
-    border: 26px solid black;
+    opacity: .98;
+    border: 26px solid $maroon;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -49,10 +48,11 @@ html {
   &.splash-spinner {
     color: $blue;
     font-family: $primary-font;
-    font-size: 61px;
+    font-size: 80px;
+    height: 50px;
     letter-spacing: 2px;
     line-height: 10px;
-    margin: auto;
+    margin: 10px auto;
   }
 
   &.splash-button {
