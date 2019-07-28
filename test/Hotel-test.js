@@ -10,9 +10,11 @@ import mockRoomServices from '../data/sampleRoomServices';
 
 import Hotel from '../src/Hotel';
 import DOMupdates from '../src/DOMupdates';
-import { isRegExp } from 'util';
 
-chai.spy.on(DOMupdates, ['showToday', 'displayCurrCustName', 'displayOccupancy', 'displayTodayAvailability', 'displayRevenue'], () => true)
+chai.spy.on(DOMupdates, 
+  ['showToday', 'showCurrCustName', 'showOccupancy', 'showTodayAvail', 
+    'showRevenue', 'displayAllTodayRooms', 'showHighOccupancy', 'showLowOccupancy',
+  'displayTodayNoOrders'], () => true)
 
 describe('Hotel', () => {
 

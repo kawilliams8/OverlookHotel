@@ -31,7 +31,7 @@
           <li class="tab-link" data-tab="tab-4">ROOMS</li>
         </ul>
         <section id="tab-1" class="tab-content current">
-          <h4>Today's Availability: <span class="today-availability"></span> of 50 rooms.</h4>
+          <h4>Today's Availability: <span class="today-availability"></span> of 50 rooms</h4>
           <h4>Today's Occupancy: <span class="today-occupancy"></span>%</h4>
           <h4>Today's Bookings Revenue: $<span class="today-bookings-sales"></span></h4>
           <h4>Today's Room Service Revenue: $<span class="today-room-services"></span></h4>
@@ -71,9 +71,17 @@
           <div>
             <aside class="tab-3-aside">
               <h4>Today's Booked Rooms:</h4>
-              <ul class="today-rooms"></ul>
+              <ul class="today-bookings"></ul>
             </aside>
             <article>
+              <h4>Lowest Occupancy Date: 
+                <span class="room-low-occupancy"></span>, with 
+                <span class="room-low-count"></span> rooms booked.
+              </h4>
+              <h4>Highest Occupancy Dates: 
+                <span class="room-high-occupancy"></span>, with 
+                <span class="room-high-count"></span> rooms booked, each day.
+              </h4>
               <h4>Find Available Rooms:</h4>
               <input class="room-search room-search-input" type="text" placeholder="DD/MM/YYYY">
               <button class="room-search room-search-button">Search</button>

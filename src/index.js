@@ -7,6 +7,7 @@ import './images/Overlook_background.png';
 import './images/typewriter.png';
 
 import Hotel from '../src/Hotel';
+import DOMupdates from './DOMupdates';
 
 let hotel, bookings, rooms, roomServices, users;
 
@@ -39,7 +40,12 @@ $('.splash-button').on('click', () => {
   hotel.calculateOccupancy(hotel.searchDate);
   hotel.listAvailableRooms(hotel.searchDate);
   hotel.calculateRevenue(hotel.searchDate)
-})
+  hotel.findAllTodayCustomers(hotel.searchDate);
+  hotel.findTodayRoomServices(hotel.searchDate);
+  hotel.findTodayBookings(hotel.searchDate);
+  hotel.findPopularBookingDate();
+  hotel.findUnpopularBookingDate();
+});
 
 $('ul.tabs li').click(function () {
   var tab_id = $(this).attr('data-tab');
@@ -47,4 +53,12 @@ $('ul.tabs li').click(function () {
   $('.tab-content').removeClass('current');
   $(this).addClass('current');
   $("#" + tab_id).addClass('current');
+});
+
+$('.customer-search-button').on('click', function (e) {
+  e.preventDefault();
+  hotel.searchCustomer = $('.customer-search-input').val();
+  hotel.searchForCustomer(hotel.searchCustomer);
+  $('.customer-search-input').val('');
+  DOMupdates.showCurrCustName(hotel.currentCustomer.name)
 });
