@@ -4,6 +4,7 @@ import './css/base.scss';
 // import all images
 import './images/spinner.gif';
 import './images/Overlook_background.png';
+import './images/typewriter.png';
 
 import Hotel from '../src/Hotel';
 
@@ -35,20 +36,13 @@ $(document).ready(() => {
 $('.splash-button').on('click', () => {
   $('main, footer').delay(600).fadeIn(600);
   $('.splash-div').fadeOut(600);
+  hotel.calculateOccupancy(hotel.searchDate);
 })
 
-$(() =>  {
-  if ($(".tabs_container .tabs").length > 0) {
-    var active_tab = $(".tab_content .tabs li:first-child").data("tab");
-    $("#" + active_tab).show();
-    $(".tab_content .tabs li:first-child").addClass("active");
-
-    $(".tab_content .tabs li").click(function (e) {
-      var active_tab = $(this).data("tab");
-      $(".tab_content .text").hide();
-      $("#" + active_tab).show();
-      $(".tab_content .tabs li").removeClass("active");
-      $(this).addClass("active");
-    });
-  }
+$('ul.tabs li').click(function () {
+  var tab_id = $(this).attr('data-tab');
+  $('ul.tabs li').removeClass('current');
+  $('.tab-content').removeClass('current');
+  $(this).addClass('current');
+  $("#" + tab_id).addClass('current');
 });

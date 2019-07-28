@@ -12,7 +12,7 @@ import Hotel from '../src/Hotel';
 import DOMupdates from '../src/DOMupdates';
 import { isRegExp } from 'util';
 
-chai.spy.on(DOMupdates, ['showToday', 'displayCurrCustName'], () => true)
+chai.spy.on(DOMupdates, ['showToday', 'displayCurrCustName', 'displayOccupancy'], () => true)
 
 describe('Hotel', () => {
 

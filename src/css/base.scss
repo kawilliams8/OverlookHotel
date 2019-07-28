@@ -3,9 +3,11 @@ $orange: #DF5F18;
 $maroon: #981f24;
 $blue: #00FFFF;
 $grey: #dee4ef;
+
 $primary-font: 'Roboto', sans-serif;
 $text-light: #dee4ef;
 $text-dark: black;
+
 $accent: #DF5F18;
 $background: #981f24;
 $tabs: #DF5F18;
@@ -83,19 +85,24 @@ header {
   display: flex;
 	flex-direction: row;
 	margin: 0px auto 41px auto;
-	width: 100%;
+  width: 100%;
+  
+  .logo {
+    height: 90px;
+    padding: 10px 0 10px 33px;
+  }
 	
 	h1 {
 		align-content: flex-start;
 		color: $text-light;
-		font-size: 67px;
-    margin: 10px 0px;
-    padding-left: 26px;
+		font-size: 51px;
+    margin: 20px 0px;
+    padding-left: 21px;
 	}
 	
 	aside {
 		align-self: center;
-		background-color: $accent;
+		background-color: $grey;
 		border-left: 10px $blue solid;
 		border-radius: 8px 4px 0px 0px;
 		display: flex;
@@ -108,7 +115,7 @@ header {
 
 	h2, h3 {
 		align-content: flex-start;
-		color: $panel;
+		color: $maroon;
 		font-size: 16px;
 		justify-content: center;
 		padding: 5px;
@@ -188,10 +195,10 @@ div {
 	flex-direction: row;
 
 	aside {
-		background-color: $tabs;
-		border-left: 5px $text-light solid;
+		background-color: $grey;
+		border-left: 5px $orange solid;
     border-radius: 4px 4px 0px 0px;
-		height: 600px;
+		height: 400px;
 		justify-content: flex-start;
 		margin-left: -2px;
 		padding: 10px;
@@ -210,7 +217,7 @@ div {
 
 	article {
 		justify-content: flex-end;
-		height: 600px;
+		height: 400px;
 		margin-left: 20px;
 		width: 100%;
 	}
@@ -256,7 +263,7 @@ footer {
   color: $maroon;
   height: 125px;
 	line-height: 50px;
-  margin: 0;
+  margin: 80px 0 0 0;
 	padding: 0px;
 	text-align: center;
   width: 100%;
@@ -266,144 +273,3 @@ footer {
     text-align: center;
   }
 }
-
-// main {
-//     height: 100%;
-
-//   & header {
-//     background-color: $maroon;
-//     border-bottom: 10px solid $orange;
-//     display: flex;
-//     justify-content: space-between;
-//     height: 100px;
-//     width: 100%;
-
-//     & .header-div{
-//       color: $grey;
-//       width: 400px;
-//     }
-
-//     & .header-customer {
-//       font-style: italic;
-//     }
-//   }
-
-//   & h1 {
-//     color: $grey;
-//     font-size: 51px;
-//     padding: 15px 0 0 20px;
-//   }
-
-//   & h2 {
-//     font-size: 21px;
-//     padding: 16px 20px 0 0;
-//   }
-// }
-
-// .cf:before, .cf:after {
-//   content: " ";
-//   display: table;
-// }
-
-// .cf:after {
-//   clear: both;
-// }
-
-// .tabs_container {
-//   position: relative;
-//   margin: 60px;
-// }
-
-// .tabs {
-//   position: relative;
-//   list-style: none;
-//   padding: 0;
-//   margin: 0;
-//   z-index: 2;
-
-//   & li {
-//     background: #fff;
-//     border-top: 5px solid #eaeff7;
-//     border-radius: 3px 3px 0 0;
-//     border-right: 5px solid #eaeff7;
-//     color: $maroon;
-//     cursor: pointer;
-//     float: left;
-//     font-size: 16px;
-//     letter-spacing: 2.5px;
-//     padding: 13px 20px;
-//     position: relative;
-//     text-transform: uppercase;
-//     transition: 0.3s;
-//     -webkit-transition: 0.3s;
-//   }
-
-//   & li:first-of-type {
-//     border-left: 5px solid #eaeff7;
-//     border-radius: 3px 3px 0 0;
-//   }
-
-//   & li.active {
-//   color: #0f0615;
-//   border-color: #dee4ef;
-//   border-radius: 3px 3px 0 0;
-//   }
-
-//   & li:after {
-//     position: absolute;
-//     content: '';
-//     bottom: -5px;
-//     left: 0;
-//     display: inline-block;
-//     width: 100%;
-//     height: 5px;
-//     background: #dee4ef;
-//     -webkit-transition: 0.3s;
-//     transition: 0.3s;
-//   }
-
-//   & li:before {
-//     position: absolute;
-//     content: '';
-//     opacity: 0;
-//     top: -5px;
-//     left: -5px;
-//     display: inline-block;
-//     width: 5px;
-//     height: calc(100% + 5px);
-//     background: #eaeff7;
-//     -webkit-transition: 0.3s;
-//     transition: 0.3s;
-//   }
-
-//   & li.active:before {
-//     background: #dee4ef;
-//     opacity: 1;
-//   }
-
-//   & li.active:after {
-//     background: #fff;
-//   }
-// }
-
-// .text {
-//   background: #fff;
-//   border: 5px solid #dee4ef;
-//   display: none;
-//   height: 600px;
-//   margin: 0;
-//   padding: 45px;
-//   position: relative;
-
-//   & p {
-//     margin: 0 0 25px 0;
-//     color: #4b454f;
-//     font-size: 17px;
-//     line-height: 25px;
-//     font-weight: 300;
-//   }
-
-//   & p:last-of-type {
-//     margin: 0;
-//   }
-// }

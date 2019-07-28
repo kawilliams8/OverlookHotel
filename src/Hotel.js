@@ -58,6 +58,7 @@ class Hotel {
 
   calculateOccupancy(date) {
     let bookedRooms = this.bookings.filter(booking => booking.date === date);
+    DOMupdates.displayOccupancy(bookedRooms.length / this.rooms.length);
     return bookedRooms.length / this.rooms.length;
   }
 
