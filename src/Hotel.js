@@ -2,7 +2,6 @@ import DOMupdates from './DOMupdates';
 import Customer from './Customer';
 import Bookings from './Bookings';
 import RoomServices from './RoomServices';
-import { SlowBuffer } from 'buffer';
 
 class Hotel {
   constructor(users, rooms, bookings, roomServices) {
@@ -73,21 +72,21 @@ class Hotel {
         let customer = this.customers.find(customer => customer.id === booking.userID)
         let id = customer.id;
         let room = booking.roomNumber;
-        DOMupdates.displayTodayCustomers(customer, id, room);
+        DOMupdates.showTodayCustomers(customer, id, room);
       })
     } else {
-      DOMupdates.displayTodayNoCustomers();
+      DOMupdates.showTodayNoCustomers();
     }
   }
 
-  //Booking methods
+  //Bookings methods
 
   addNewBooking(date, roomNumber) {
     let newBooking = new Bookings(this.currentCustomer.id, date, roomNumber);
     this.bookings.push(newBooking);
   }
 
-  listAvailableRooms(date) {
+  countAvailableRooms(date) {
     let bookedRooms = this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
     let availableRooms = this.rooms.filter((room) => {
       if ((bookedRooms.indexOf(room.number) < 0)) {
@@ -95,6 +94,29 @@ class Hotel {
       }
     }).sort((a, b) => a.number - b.number);
     DOMupdates.showTodayAvail(availableRooms.length);
+    return availableRooms;
+  }
+
+  listAvailableRoomsGivenDay(date) {
+    let bookedRooms = this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
+    let availableRooms = this.rooms.filter((room) => {
+      if ((bookedRooms.indexOf(room.number) < 0)) {
+        return room;
+      }
+    }).sort((a, b) => a.number - b.number);
+    if (availableRooms.length > 0) {
+      availableRooms.forEach(room => {
+        let number = room.number;
+        let type = room.roomType;
+        let bidet = room.bidet;
+        let bedSize = room.bedSize;
+        let bedNum = room.numBeds;
+        let cost = room.costPerNight;
+        DOMupdates.showAvailableRoomsGivenDay(number, type, cost, bedSize, bedNum, bidet)
+      })
+    } else {
+      DOMupdates.showNoAvailabilityGivenDay(date)
+    }
     return availableRooms;
   }
 
@@ -119,10 +141,10 @@ class Hotel {
         let bedSize = room.bedSize;
         let bedNum = room.numBeds;
         let bidet = room.bidet;
-        DOMupdates.displayAllTodayRooms(number, type, cost, bedSize, bedNum, bidet);
+        DOMupdates.showAllTodayRooms(number, type, cost, bedSize, bedNum, bidet);
       })
     } else {
-      DOMupdates.displayNoTodayRooms();
+      DOMupdates.showNoTodayRooms();
     }
     return todayBookings;
   }
@@ -163,16 +185,27 @@ class Hotel {
         let customer = this.customers.find(customer => customer.id === order.userID);
         let food = order.food;
         let cost = order.totalCost;
-        DOMupdates.displayTodayOrders(customer, food, cost);
+        DOMupdates.showTodayOrders(customer, food, cost);
       });
     } else {
-      DOMupdates.displayTodayNoOrders();
+      DOMupdates.showTodayNoOrders();
     }
     return todayRoomServices;
   }
 
   findRoomServicesGivenDate(date) {
     let roomServices = this.roomServices.filter(order => order.date === date);
+    if (roomServices.length > 0) {
+      DOMupdates.showAllGivenDayOrdersTitle(date);
+      roomServices.forEach(order => {
+        let customer = this.customers.find(customer => customer.id === order.userID)
+        let food = order.food;
+        let cost = order.totalCost;
+        DOMupdates.showAllGivenDayOrders(customer, food, cost, date);
+      })
+    } else {
+      DOMupdates.showNoGivenDayOrders(date);
+    }
     return roomServices;
   }
 

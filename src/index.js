@@ -38,7 +38,7 @@ $('.splash-button').on('click', () => {
   $('main, footer').delay(600).fadeIn(600);
   $('.splash-div').fadeOut(600);
   hotel.calculateOccupancy(hotel.searchDate);
-  hotel.listAvailableRooms(hotel.searchDate);
+  hotel.countAvailableRooms(hotel.searchDate);
   hotel.calculateRevenue(hotel.searchDate)
   hotel.findAllTodayCustomers(hotel.searchDate);
   hotel.findTodayRoomServices(hotel.searchDate);
@@ -61,4 +61,28 @@ $('.customer-search-button').on('click', function (e) {
   hotel.searchForCustomer(hotel.searchCustomer);
   $('.customer-search-input').val('');
   DOMupdates.showCurrCustName(hotel.currentCustomer.name)
+});
+
+$('.order-search-button').on('click', function (e) {
+  e.preventDefault();
+  hotel.searchDate = $('.order-search-input').val();
+  hotel.findRoomServicesGivenDate(hotel.searchDate);
+  $('.order-search-input').val('');
+});
+
+$('.order-clear-button').on('click', function (e) {
+  e.preventDefault();
+  $('.given-day-orders').html('');
+});
+
+$('.room-search-button').on('click', function (e) {
+  e.preventDefault();
+  hotel.searchDate = $('.room-search-input').val();
+  hotel.listAvailableRoomsGivenDay(hotel.searchDate);
+  $('.room-search-input').val('');
+});
+
+$('.room-clear-button').on('click', function (e) {
+  e.preventDefault();
+  $('.given-day-rooms').html('');
 });
