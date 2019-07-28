@@ -8,17 +8,17 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class='splash splash-div'>
-      <h3 class='splash splash-h3'>Welcome to the</h3>
-      <h2 class='splash splash-h2'>OVERLOOK HOTEL</h2>
-      <img class='splash splash-spinner' src="/images/spinner.gif" alt="spinner animation">
-      <button class='splash main splash-button'>ENTER</button>
+    <div class="splash splash-div">
+      <h3 class="splash splash-h3">Welcome to the</h3>
+      <h2 class="splash splash-h2">OVERLOOK HOTEL</h2>
+      <img class="splash splash-spinner" src="/images/spinner.gif" alt="spinner animation">
+      <button class="splash main splash-button">ENTER</button>
     </div>
     <main>
       <header>
-        <img class='logo' src="./images/typewriter.png" alt="typewriter logo">
+        <img class="logo" src="./images/typewriter.png" alt="typewriter logo">
         <h1>Overlook Hotel</h1>
-        <aside class='header-aside'>
+        <aside class="header-aside">
           <h2>Today's Date: <span class="header-today"></span></h2>
           <h3>Current Customer: <span class="header-name"></span></h3>
         </aside>
@@ -38,8 +38,8 @@
           <h4>Today's Total Revenue: $<span class="today-total-sales"></span></h4>
         </section>
         <section id="tab-2" class="tab-content">
-          <div>
-            <aside class="tab-2-aside">
+          <div class="div-main-content">
+            <aside class="tab-2-aside left">
               <h4>Today's Arrivals:</h4>
               <ul class="today-customers"></ul>
             </aside>
@@ -54,8 +54,8 @@
           </div>
         </section>
         <section id="tab-3" class="tab-content">
-          <div>
-            <aside class="tab-3-aside">
+          <div class="div-main-content">
+            <aside class="tab-3-aside left">
               <h4>Today's Orders:</h4>
               <ul class="today-orders"></ul>
             </aside>
@@ -66,11 +66,14 @@
               <button class="order-search order-clear-button">Clear</button>
               <ul class="given-day-orders"></ul>
             </article>
+            <aside class="tab-3-aside room-service right">
+              <h4>Customer Room Service History:</h4>
+            </aside>
           </div>
         </section>
         <section id="tab-4" class="tab-content">
-          <div>
-            <aside class="tab-3-aside">
+          <div class="div-main-content">
+            <aside class="tab-4-aside left">
               <h4>Today's Booked Rooms:</h4>
               <ul class="today-bookings"></ul>
             </aside>
@@ -92,6 +95,9 @@
                 <ul class="given-day-rooms2"></ul>
               </div>
             </article>
+            <aside class="tab-4-aside booking right">
+              <h4>Customer Booking History:</h4>
+            </aside>
           </div>
         </section>
       </main>

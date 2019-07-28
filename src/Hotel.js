@@ -55,8 +55,12 @@ class Hotel {
       this.currentCustomer = foundCustomer;
       this.currentCustomer.findCurrCustBookings(this.currentCustomer);
       this.currentCustomer.findCurrCustRoomServices(this.currentCustomer);
+      this.populateBookingHistory();
+      this.populateRoomServiceHistory();
     } else {
       DOMupdates.showCustomerNotFound(name);
+      this.populateBookingHistory();
+      this.populateRoomServiceHistory();
     }
     return foundCustomer !== undefined ? true : false;
   }
@@ -175,6 +179,20 @@ class Hotel {
     return Object.keys(bookedDates).filter(date => bookedDates[date] === Math.min(...Object.values(bookedDates)));
   }
 
+  populateBookingHistory() {
+    if (this.currentCustomer.customerBookings.length > 0) {
+      DOMupdates.showCurrCustBookingHistoryTitle(this.currentCustomer.name);
+      this.currentCustomer.customerBookings.forEach(booking => {
+        let date = booking.date;
+        let roomNumber = booking.roomNumber;
+        DOMupdates.showCurrCustBookingHistoryList(date, roomNumber);
+      })
+    } else {
+      console.log('in book history else');
+      DOMupdates.showCurrCustBookingHistoryNone();
+    }
+  }
+
   //Room Service methods
 
   addNewRoomService(date, food, cost) {
@@ -219,6 +237,21 @@ class Hotel {
         acc.push({food: order.food, price: order.totalCost}) : false;
       return acc;
     }, []).sort((a, b) => a.price - b.price);
+  }
+
+  populateRoomServiceHistory() {
+    if (this.currentCustomer.customerRoomServices.length > 0) {
+      DOMupdates.showCurrCustRoomServiceHistoryTitle(this.currentCustomer.name);
+      this.currentCustomer.customerRoomServices.forEach(order => {
+        let date = order.date;
+        let food = order.food;
+        let cost = order.totalCost;
+        DOMupdates.showCurrCustRoomServiceHistoryList(date, food, cost);
+      })
+    } else {
+      console.log('in RS history else');
+      DOMupdates.showCurrCustRoomServiceHistoryNone();
+    }
   }
 }
 

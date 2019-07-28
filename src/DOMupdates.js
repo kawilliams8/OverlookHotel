@@ -79,6 +79,21 @@ const DOMupdates = {
     $('.rooms-div').append(noRooms);
   },
 
+  showCurrCustBookingHistoryTitle(name) {
+    let listTitle = $(`<h4>${name}: </h4>`);
+    $('aside.booking.right').append(listTitle);
+  },
+
+  showCurrCustBookingHistoryList(date, room) {
+    let listItems = $(`<h6 class='right'> &#8226; ${date}, Room number: ${room} </h6>`);
+    $('aside.booking.right').append(listItems);
+  },
+
+  showCurrCustBookingHistoryNone() {
+    let noItems = $(`<li>No bookings found.</li>`);
+    $('aside.booking.right').append(noItems);
+  },
+
   //Room Service methods
 
   showTodayOrders(customer, food, cost) {
@@ -105,7 +120,22 @@ const DOMupdates = {
   showNoGivenDayOrders(date) {
     let noItems = $(`<li>No orders found for ${date}.</li>`);
     $('.given-day-orders').append(noItems);
-  }
+  },
+
+  showCurrCustRoomServiceHistoryTitle(name) {
+    let listTitle = $(`<h4>${name}: </h4>`);
+    $('aside.room-service.right').append(listTitle);
+  },
+
+  showCurrCustRoomServiceHistoryList(date, food, cost) {
+    let listItems = $(`<h6 class='right'> &#8226; ${date}, ${food}, $${cost.toFixed(2)} </h6>`);
+    $('aside.room-service.right').append(listItems);
+  },
+
+  showCurrCustRoomServiceHistoryNone() {
+    let noItems = $(`<li>No bookings found.</li>`);
+    $('aside.room-service.right').append(noItems);
+  },
 
 
 };

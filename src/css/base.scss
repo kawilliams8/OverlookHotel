@@ -144,7 +144,7 @@ main {
     padding: 0px 20px;
     list-style: none;
     display: flex;
-		justify-content: space-between;
+		justify-content: space-around;
 	}
 
 	ul.tabs li {
@@ -191,42 +191,61 @@ main {
 	}
 }
 
-div {
+.div-main-content {
 	display: flex;
-	flex-direction: row;
+  flex-direction: row;
 
-	aside {
-		background-color: $grey;
+  aside {
+    background-color: $grey;
 		border-left: 5px $maroon solid;
     border-radius: 4px 4px 0px 0px;
-		height: 400px;
-		justify-content: flex-start;
-		margin-left: -2px;
-		padding: 10px;
-    width: 300px;
-    
-    & ul{
-    max-height: 33vh;
+    height: 400px;
+    padding: 10px;
+    width: 24%;
+    max-height: 100vh;
     overflow: scroll;
-    }
 
 		& h4 {
 			color: $text-dark;
 			font-size: 16px;
 			padding-left: 10px;
-		}
+    }
+    
+    & h5, li{
+      font-size: 16px;
+      margin: 12px 0 2px -20px;
+      padding: 2px auto;
+    }
 
-		& li {
-			font-size: 12px;
+		& h6 {
+      font-size: 12px;
+      margin: 2px 0 2px -20px;
+      padding: 2px auto;
 		}
-	}
+    
+    & .left {
+      justify-content: flex-start;
+      margin-left: -2px;
+    }
+  
+    & .right {
+      justify-content: flex-end;
+      margin-left: 20px;
 
-	article {
-		justify-content: flex-end;
+      & h6 {
+        font-size: 12px;
+        margin: 2px 0 2px 30px;
+        padding: 2px auto;
+      }
+    }
+  }
+
+  article {
+		justify-content: center;
 		height: 400px;
-		margin-left: 20px;
-		width: 100%;
-	}
+		margin: 0 20px;
+		width: 50%;
+  }
 
 	button, input {
 		border: 2px solid $text-light;
@@ -260,7 +279,6 @@ div {
 	width: 150px;
 	justify-content: space-around;
 	}
-
 }
 
 footer {
