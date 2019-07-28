@@ -244,7 +244,23 @@ main {
 		justify-content: center;
 		height: 400px;
 		margin: 0 20px;
-		width: 50%;
+    width: 50%;
+
+    & .book-room-button {
+    display: inline;
+    margin: 2px;
+    padding: 2px;
+  }
+    
+    & h5{
+      display: inline;
+      margin: 2px;
+      padding: 2px;
+    }
+
+    & h6 {
+      display: block;
+    }
   }
 
 	button, input {
@@ -267,17 +283,19 @@ main {
 		color: $text-dark;
 	}
 
-	.roomsDiv {
+	.rooms-div {
 		display: flex;
-		flex-direction: row;
+    flex-direction: row;
 	}
 
-	.givenDayRooms1,
-	.givenDayRooms2 {
+	.given-day-rooms,
+	.given-day-rooms2 {
 	text-indent: -25px;
-	margin: 5px 10px;
-	width: 150px;
-	justify-content: space-around;
+	// margin: 5px 10px;
+	// width: 150px;
+  // justify-content: space-around;
+  max-height: 21vh;
+  overflow: scroll;
 	}
 }
 

@@ -76,7 +76,8 @@ $('.customer-add-button').on('click', function(e) {
   DOMupdates.clearCustomerNotFoundMessage();
 });
 
-$('.customer-search-input').on('keydown', function() {
+$('.customer-search-input').on('keydown', function(e) {
+  e.preventDefault();
   DOMupdates.clearCustomerNotFoundMessage();
 });
 
@@ -106,4 +107,9 @@ $('.room-search-button').on('click', function (e) {
 $('.room-clear-button').on('click', function (e) {
   e.preventDefault();
   $('.given-day-rooms').html('');
+});
+
+$('.book-room-button').on('click', function(e) {
+  e.preventDefault();
+  console.log('clicked booking button!')
 });
