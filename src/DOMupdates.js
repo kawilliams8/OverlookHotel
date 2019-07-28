@@ -29,6 +29,14 @@ const DOMupdates = {
     $('.today-customers').append(noItems);
   },
 
+  showCustomerNotFound(name) {
+    $('.customer-search-message').text(`"${name}" was not found.`);
+  },
+
+  clearCustomerNotFoundMessage() {
+    $('.customer-search-message').text('');
+  },
+
   //Booking methods
 
   showTodayAvail(number) {

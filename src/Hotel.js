@@ -51,9 +51,13 @@ class Hotel {
 
   searchForCustomer(name) {
     let foundCustomer = this.customers.find(customer => customer.name === name);
-    this.currentCustomer = foundCustomer;
-    this.currentCustomer.findCurrCustBookings(this.currentCustomer);
-    this.currentCustomer.findCurrCustRoomServices(this.currentCustomer);
+    if (foundCustomer !== undefined) {
+      this.currentCustomer = foundCustomer;
+      this.currentCustomer.findCurrCustBookings(this.currentCustomer);
+      this.currentCustomer.findCurrCustRoomServices(this.currentCustomer);
+    } else {
+      DOMupdates.showCustomerNotFound(name);
+    }
     return foundCustomer !== undefined ? true : false;
   }
 
