@@ -19,8 +19,9 @@ const DOMupdates = {
   }, 
 
   showTodayCustomers(customer, id, room) {
-    let listItem = $(`<li>${customer.name}, User ID: ${id}, Room:${room}</li>`)
-    $('.today-customers').append(listItem)
+    let listName = $(`<h5>${customer.name}:</h5>`);
+    let listDetails = $(`<h6> &#8226; User ID: ${id}, Room:${room}</h6>`)
+    $('.today-customers').append(listName, listDetails)
   },
 
   showTodayNoCustomers() {
@@ -49,8 +50,8 @@ const DOMupdates = {
   },
 
   showAllTodayRooms(number, type, cost, bedsize, bednum, bidet) {
-    let listRooms = $(`<p>Room Number: ${number}, Type: ${type.toUpperCase()}</p>`);
-    let listRoomDetails = $(`<h6>Cost: $${cost.toFixed(2)}, Bed: ${bedsize.toUpperCase()}, Quantity: ${bednum}, Bidet: ${bidet}</h6>`);
+    let listRooms = $(`<h5>Room Number: ${number}, Type: ${type.toUpperCase()}</h5>`);
+    let listRoomDetails = $(`<h6> &#8226; Cost: $${cost.toFixed(2)}, Bed: ${bedsize.toUpperCase()}, Quantity: ${bednum}, Bidet: ${bidet}</h6>`);
     $('.today-bookings').append(listRooms, listRoomDetails);
   },
 
@@ -60,8 +61,8 @@ const DOMupdates = {
   },
 
   showAvailableRoomsGivenDay(number, type, cost, bedSize, bedNum, bidet) {
-    let listRooms = $(`<h6>Room: ${number}, Type: ${type.toUpperCase()}, Cost: $${cost.toFixed(2)}</h6>`);
-    let listRoomDetails = $(`<h6>Bed: ${bedSize.toUpperCase()}, Quantity: ${bedNum}, Bidet: ${bidet}</h6>`);
+    let listRooms = $(`<h5>Room: ${number}, Type: ${type.toUpperCase()}, Cost: $${cost.toFixed(2)}</h5>`);
+    let listRoomDetails = $(`<h6> &#8226; Bed: ${bedSize.toUpperCase()}, Quantity: ${bedNum}, Bidet: ${bidet}</h6>`);
     $('.given-day-rooms').append(listRooms, listRoomDetails);
   },
 
@@ -73,8 +74,9 @@ const DOMupdates = {
   //Room Service methods
 
   showTodayOrders(customer, food, cost) {
-    let listItems = $(`<li>${customer.name}, ${food}, $${cost}</li>`);
-    $('.today-orders').append(listItems)
+    let listName = $(`<h5>${customer.name}:</h5>`);
+    let listOrder = $(`<h6> &#8226; ${food}, $${cost}</h6>`);
+    $('.today-orders').append(listName, listOrder)
   },
 
   showTodayNoOrders() {
