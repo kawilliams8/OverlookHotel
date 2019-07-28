@@ -10,8 +10,9 @@ import mockRoomServices from '../data/sampleRoomServices';
 
 import Hotel from '../src/Hotel';
 import DOMupdates from '../src/DOMupdates';
+import { isRegExp } from 'util';
 
-chai.spy.on(DOMupdates, ['showToday'], () => true)
+chai.spy.on(DOMupdates, ['showToday', 'displayCurrCustName'], () => true)
 
 describe('Hotel', () => {
 
@@ -30,6 +31,15 @@ describe('Hotel', () => {
     hotel.getTodayDate();
     expect(hotel.today).to.be.a('string');
   });
+
+  it('should search for an existing customer in the database', () => {
+    let found = hotel.searchForCustomer('Chadrick Lowe');
+    expect(found).to.equal(true);
+    expect(hotel.currentCustomer.name).to.equal('Chadrick Lowe');
+    expect(hotel.currentCustomer.id).to.equal(2);
+    expect(hotel.currentCustomer.customerBookings.length).to.equal(1);
+    expect(hotel.currentCustomer.customerRoomServices.length).to.equal(5);
+  })
   
   it('should add a new customer, with an id and name, to the existing customers', () => {
     expect(hotel.customers.length).to.equal(15);

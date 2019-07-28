@@ -30,11 +30,20 @@ class Hotel {
     DOMupdates.showToday(this.today);
   }
 
+  searchForCustomer(name) {
+    let foundCustomer = this.customers.find(customer => customer.name === name);
+    this.currentCustomer = foundCustomer;
+    this.currentCustomer.findCurrCustBookings(this.currentCustomer);
+    this.currentCustomer.findCurrCustRoomServices(this.currentCustomer);
+    return foundCustomer !== undefined ? true : false;
+  }
+
   addNewCustomer(name) {
     let id = this.customers.length + 1;
     let newCustomer = new Customer(id, name, this.bookings, this.roomServices);
     this.currentCustomer = newCustomer;
     this.customers.push(newCustomer);
+    DOMupdates.displayCurrCustName(this.currentCustomer);
   }
 
   addNewBooking(date, roomNumber) {

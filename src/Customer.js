@@ -1,4 +1,4 @@
-// import DOMupdates from './DOMupdates';
+import DOMupdates from './DOMupdates';
 
 class Customer {
   constructor(id, name, allBookings, allRoomServices) {
