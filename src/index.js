@@ -33,8 +33,8 @@ $(document).ready(() => {
 })
 
 $('.splash-button').on('click', () => {
-  $('main, footer').delay(600).fadeIn(300);
-  $('.splash-div').fadeOut(300);
+  $('main, footer').delay(600).fadeIn(600);
+  $('.splash-div').fadeOut(600);
 })
 
 $(() =>  {

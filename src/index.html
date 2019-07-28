@@ -17,36 +17,74 @@
     <main>
       <header>
         <h1>Overlook Hotel</h1>
-        <div class='header-div'>
-          <h2>Today's Date: <span class='header-today'>date</span></h2>
-          <h2>Active Customer: <span class='header-customer'>none</span></h2>
-        </div>
+        <aside class='header-aside'>
+          <h2>Today's Date: <span class="header-today"></span></h2>
+          <h3>Current Customer: <span class="header-customer"></span></h3>
+        </aside>
       </header>
-      <div class="tabs_container cf">
-        <div class="tabs tab_content cf">
-          <ul class="tabs cf">
-            <li data-tab="main" class="active">Main</li>
-            <li data-tab="customers">Customers</li>
-            <li data-tab="bookings">Bookings</li>
-            <li data-tab="room-services">Room Service</li>
-          </ul>
-          <div class="text" id="main">
-            <p>Main hotel info here.</p>
+      <main class="tabs-container">
+        <ul class="tabs">
+          <li class="tab-link current" data-tab="tab-1">MAIN</li>
+          <li class="tab-link" data-tab="tab-2">CUSTOMERS</li>
+          <li class="tab-link" data-tab="tab-3">ORDERS</li>
+          <li class="tab-link" data-tab="tab-4">ROOMS</li>
+        </ul>
+        <section id="tab-1" class="tab-content current">
+          <h4>Today's Availability: <span class="today-availability"></span> of 200 rooms.</h4>
+          <h4>Today's Occupancy: <span class="today-occupancy"></span>%</h4>
+          <h4>Today's Booking/Services Income: $<span class="today-sales"></span></h4>
+        </section>
+        <section id="tab-2" class="tab-content">
+          <div>
+            <aside class="tab-2-aside">
+              <h4>Today's Customers:</h4>
+              <ul class="today-customers"></ul>
+            </aside>
+            <article>
+              <h4>Find / Create a Customer:</h4>
+              <input class="customer-search customer-search-input" type="text" placeholder="Customer Name">
+              <button class="customer-search customer-search-button">Search</button>
+              <span class="customer-search-message"></span>
+              <ul class="customer-stats-message"></ul>
+            </article>
           </div>
-          <div class="text" id="customers">
-            <p>Customers info here.</p>
+        </section>
+        <section id="tab-3" class="tab-content">
+          <div>
+            <aside class="tab-3-aside">
+              <h4>Today's Orders:</h4>
+              <ul class="today-orders"></ul>
+            </aside>
+            <article>
+              <h4>Find Room Service Orders:</h4>
+              <input class="order-search order-search-input" type="text" placeholder="DD/MM/YYYY">
+              <button class="order-search order-search-button">Search</button>
+              <button class="order-search order-clear-button">Clear</button>
+              <ul class="given-day-orders"></ul>
+            </article>
           </div>
-          <div class="text" id="bookings">
-            <p>Bookings info here.</p>
+        </section>
+        <section id="tab-4" class="tab-content">
+          <div>
+            <aside class="tab-3-aside">
+              <h4>Today's Booked Rooms:</h4>
+              <ul class="today-rooms"></ul>
+            </aside>
+            <article>
+              <h4>Find Available Rooms:</h4>
+              <input class="room-search room-search-input" type="text" placeholder="DD/MM/YYYY">
+              <button class="room-search room-search-button">Search</button>
+              <button class="room-search room-clear-button">Clear</button>
+              <div class="rooms-div">
+                <ul class="given-day-rooms1"></ul>
+                <ul class="given-day-rooms2"></ul>
+              </div>
+            </article>
           </div>
-          <div class="text" id="room-services">
-            <p>Room service info here.</p>
-          </div>
-        </div>
-      </div>
-    </main>
-    <footer class='main footer'>
-      <p>Footer text</p>
+        </section>
+      </main>
+    <footer>
+      <h5>Copyright &copy 2019</h5>
     </footer>
   </body>
 </html>
