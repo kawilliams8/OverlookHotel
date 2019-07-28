@@ -58,32 +58,35 @@ class Hotel {
 
   calculateOccupancy(date) {
     let bookedRooms = this.bookings.filter(booking => booking.date === date);
-    DOMupdates.displayOccupancy(bookedRooms.length / this.rooms.length);
+    DOMupdates.displayOccupancy((bookedRooms.length / this.rooms.length) * 100);
     return bookedRooms.length / this.rooms.length;
   }
 
   calculateRevenue(date) {
     let roomNums = this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
-    let bookingsRevenue = roomNums.reduce((acc, roomNum) => {
+    let bookingsRev = roomNums.reduce((acc, roomNum) => {
       acc += this.rooms.find(room => room.number === roomNum).costPerNight;
       return acc;
     }, 0);
     let ordersForDate = this.roomServices.filter(order => order.date === date);
-    let roomServiceRevenue = ordersForDate.reduce((acc, roomService) => {
+    let roomServiceRev = ordersForDate.reduce((acc, roomService) => {
       acc += roomService.totalCost;
       return acc;
     }, 0);
-
-    return +(bookingsRevenue + roomServiceRevenue).toFixed(2)
+    let total = +(bookingsRev + roomServiceRev).toFixed(2);
+    DOMupdates.displayRevenue(bookingsRev, roomServiceRev, total);
+    return +(bookingsRev + roomServiceRev).toFixed(2)
   }
 
   listAvailableRooms(date) {
     let bookedRooms = this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
-    return this.rooms.filter((room) => {
+    let availableRooms = this.rooms.filter((room) => {
       if ((bookedRooms.indexOf(room.number) < 0)) {
         return room;
       }
-    }).sort((a, b) => a.number - b.number)
+    }).sort((a, b) => a.number - b.number);
+    DOMupdates.displayTodayAvailability(availableRooms.length);
+    return availableRooms;
   }
 
   filterTodayAvailableRooms(availableRooms, roomType) {

@@ -37,6 +37,8 @@ $('.splash-button').on('click', () => {
   $('main, footer').delay(600).fadeIn(600);
   $('.splash-div').fadeOut(600);
   hotel.calculateOccupancy(hotel.searchDate);
+  hotel.listAvailableRooms(hotel.searchDate);
+  hotel.calculateRevenue(hotel.searchDate)
 })
 
 $('ul.tabs li').click(function () {
