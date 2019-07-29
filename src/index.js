@@ -63,6 +63,9 @@ $('.customer-search-button').on('click', function (e) {
   $('.customer-search-input').val('');
   hotel.searchForCustomer(hotel.searchCustomer);
   DOMupdates.showCurrCustName(hotel.currentCustomer.name);
+  hotel.currentCustomer.findRevCurrCustRoomServicesGivenDay(hotel.searchDate);
+  hotel.currentCustomer.findRevCurrCustRoomServiceForever();
+  hotel.currentCustomer.addCurrCustBookingsBill();
 });
 
 $('.customer-add-button').on('click', function(e) {
@@ -80,8 +83,8 @@ $('.customer-reset-button').on('click', function() {
   $('.customer-search-input').val('');
   $('.customer-search-message').text('')
   hotel.currentCustomer = {};
-  console.log(hotel.currentCustomer);
   $('.header-name, h6.right').text('');
+  $('.bill').text('--')
 });
 
 $('.customer-search-input').on('keydown', function() {

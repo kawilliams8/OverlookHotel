@@ -41,6 +41,22 @@ const DOMupdates = {
     $('.customer-search-message').text('');
   },
 
+  showCustomerBill1(amount) {
+    $('.customer-today-room-service-bill').text(amount);
+  },
+
+  showCustomerBill2(amount) {
+    $('.customer-forever-room-service-bill').text(amount);
+  },
+
+  showCustomerBill3(amount) {
+    $('.customer-bookings-bill').text(amount);
+  },
+
+  showCustomerBill4(amount) {
+    $('.customer-total-bill').text(amount);
+  },
+
   //Booking methods
 
   showTodayAvail(number) {

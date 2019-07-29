@@ -8,7 +8,7 @@ class Hotel {
     this.rooms = rooms; 
     this.bookings = bookings.map(booking => new Bookings(booking.userID, booking.date, booking.roomNumber)) || [];
     this.roomServices = roomServices.map(roomService => new RoomServices(roomService.userID, roomService.date, roomService.food, roomService.totalCost)) || [];
-    this.customers = users.map(user => new Customer(user.id, user.name, this.bookings, this.roomServices)) || [];
+    this.customers = users.map(user => new Customer(user.id, user.name, this.bookings, this.roomServices, this.rooms)) || [];
     this.searchDate = '';
     this.today = '';
     this.searchCustomer = '';

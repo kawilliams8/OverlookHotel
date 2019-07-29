@@ -93,5 +93,28 @@ describe('Customer', () => {
     hotel.currentCustomer.findCurrCustRoomServices(hotel.currentCustomer);
     let bill = hotel.currentCustomer.findRevCurrCustRoomServiceForever();
     expect(bill).to.equal(39);
-  })
+  });
+
+  it('should add up the current customer\'s bookings bill', () => {
+    hotel.addNewBooking("2019/10/22", 1);
+    hotel.addNewBooking("2019/10/23", 1);
+    hotel.addNewBooking("2019/10/24", 1);
+    hotel.currentCustomer.findCurrCustBookings(hotel.currentCustomer);
+    let bill = hotel.currentCustomer.addCurrCustBookingsBill();
+    expect(bill).to.equal(795.09);
+  });
+
+  it('should add up the current customer\'s total bill', () => {
+    hotel.addNewRoomService("2019/10/22", 'meatball sub', 12);
+    hotel.addNewRoomService("2019/10/22", 'turkey sandwich', 13);
+    hotel.addNewRoomService("2019/10/23", 'Handcrafted Cotton Sandwich', 14);
+    hotel.currentCustomer.findCurrCustRoomServices(hotel.currentCustomer);
+    hotel.addNewBooking("2019/10/22", 1);
+    hotel.addNewBooking("2019/10/23", 1);
+    hotel.addNewBooking("2019/10/24", 1);
+    hotel.currentCustomer.findCurrCustBookings(hotel.currentCustomer);
+    let bill = hotel.currentCustomer.addCurrCustTotalBill();
+    expect(bill).to.equal(834.09);
+  });
+
 });
