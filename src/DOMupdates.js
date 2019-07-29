@@ -30,7 +30,11 @@ const DOMupdates = {
   },
 
   showCustomerNotFound(name) {
-    $('.customer-search-message').text(`"${name}" was not found.`);
+    $('.customer-search-message').text(`"${name}" was not found in the database.`);
+  },
+
+  showCustomerAddedMessage(name) {
+    $('.customer-search-message').text(`"${name}" has been added to the database.`);
   },
 
   clearCustomerNotFoundMessage() {
@@ -69,7 +73,7 @@ const DOMupdates = {
   },
 
   showAvailableRoomsGivenDay(number, type, cost, bedSize, bedNum, bidet) {
-    let listRooms = $(`<button class='book-room-button' id='${number}'>BOOK</button> <h5>Room: ${number}, Type: ${type.toUpperCase()}, Cost: $${cost.toFixed(2)}</h5>`);
+    let listRooms = $(`<button class='book-room-button' id='${number}'>Book</button> <h5>Room: ${number}, Type: ${type.toUpperCase()}, Cost: $${cost.toFixed(2)}</h5>`);
     let listRoomDetails = $(`<h6> &#8226; Bed: ${bedSize.toUpperCase()}, Quantity: ${bedNum}, Bidet: ${bidet}</h6>`);
     $('.given-day-rooms').append(listRooms, listRoomDetails);
   },
@@ -80,7 +84,7 @@ const DOMupdates = {
   },
 
   showCurrCustBookingHistoryTitle(name) {
-    let listTitle = $(`<h4>${name}: </h4>`);
+    let listTitle = $(`<h4 class="header-name">${name}: </h4>`);
     $('aside.booking.right').append(listTitle);
   },
 
@@ -90,7 +94,7 @@ const DOMupdates = {
   },
 
   showCurrCustBookingHistoryNone() {
-    let noItems = $(`<li>No bookings found.</li>`);
+    let noItems = $(`<li class="no-booking-history-message">No bookings found.</li>`);
     $('aside.booking.right').append(noItems);
   },
 
@@ -123,7 +127,7 @@ const DOMupdates = {
   },
 
   showCurrCustRoomServiceHistoryTitle(name) {
-    let listTitle = $(`<h4>${name}: </h4>`);
+    let listTitle = $(`<h4 class="header-name">${name}: </h4>`);
     $('aside.room-service.right').append(listTitle);
   },
 
@@ -133,12 +137,12 @@ const DOMupdates = {
   },
 
   showCurrCustRoomServiceHistoryNone() {
-    let noItems = $(`<li>No bookings found.</li>`);
+    let noItems = $(`<li class="no-room-services-history-message">No bookings found.</li>`);
     $('aside.room-service.right').append(noItems);
   },
 
   showMenu(food, cost) {
-    let listFoods = $(`<button class='place-order-button' data-food='${food}' data-cost='${cost}'>SELECT</button> <h5>Meal: ${food}, Cost: $${cost}</h5>`);
+    let listFoods = $(`<button class='place-order-button' data-food='${food}' data-cost='${cost}'>Order</button> <h5>${food}, $${cost}</h5><br>`);
     $('.place-order-list').append(listFoods);
   },
 

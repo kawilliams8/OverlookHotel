@@ -71,6 +71,7 @@ class Hotel {
     this.currentCustomer = newCustomer;
     this.customers.push(newCustomer);
     DOMupdates.showCurrCustName(this.currentCustomer);
+    // DOMupdates.showCustomerAddedMessage(newCustomer.name);
   }
 
   findAllTodayCustomers(date) {
@@ -193,9 +194,6 @@ class Hotel {
         let roomNumber = booking.roomNumber;
         DOMupdates.showCurrCustBookingHistoryList(date, roomNumber);
       })
-    } else {
-      console.log('in book history else');
-      DOMupdates.showCurrCustBookingHistoryNone();
     }
   }
 
@@ -209,7 +207,6 @@ class Hotel {
       let date = order.date;
       let food = order.food;
       let cost = parseInt(order.totalCost);
-      console.log(date, food, cost)
       DOMupdates.showCurrCustRoomServiceHistoryList(date, food, cost);
     });
   }
@@ -270,9 +267,6 @@ class Hotel {
         let cost = order.totalCost;
         DOMupdates.showCurrCustRoomServiceHistoryList(date, food, cost);
       });
-    } else {
-      console.log('in RS history else');
-      DOMupdates.showCurrCustRoomServiceHistoryNone();
     }
   }
 }

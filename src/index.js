@@ -60,20 +60,28 @@ $('ul.tabs li').click(function () {
 $('.customer-search-button').on('click', function (e) {
   e.preventDefault();
   hotel.searchCustomer = $('.customer-search-input').val();
-  hotel.searchForCustomer(hotel.searchCustomer);
   $('.customer-search-input').val('');
+  hotel.searchForCustomer(hotel.searchCustomer);
   DOMupdates.showCurrCustName(hotel.currentCustomer.name);
-  console.log('hotel.currentCustomer :', hotel.currentCustomer);
 });
 
 $('.customer-add-button').on('click', function(e) {
   e.preventDefault();
   hotel.searchCustomer = $('.customer-search-input').val();
-  hotel.addNewCustomer(hotel.searchCustomer);
   $('.customer-search-input').val('');
+  hotel.addNewCustomer(hotel.searchCustomer);
   DOMupdates.showCurrCustName(hotel.currentCustomer.name);
-  console.log('hotel.currentCustomer :', hotel.currentCustomer);
-  DOMupdates.clearCustomerNotFoundMessage();
+  DOMupdates.showCustomerAddedMessage(hotel.currentCustomer.name);
+  DOMupdates.showCurrCustBookingHistoryNone();
+  DOMupdates.showCurrCustRoomServiceHistoryNone();
+});
+
+$('.customer-reset-button').on('click', function() {
+  $('.customer-search-input').val('');
+  $('.customer-search-message').text('')
+  hotel.currentCustomer = {};
+  console.log(hotel.currentCustomer);
+  $('.header-name, h6.right').text('');
 });
 
 $('.customer-search-input').on('keydown', function() {
@@ -109,10 +117,8 @@ $('.place-order-clear-button').on('click', function (e) {
 $('.place-order-list').on('click', '.place-order-button', function (e) {
   e.preventDefault();
   $('aside.room-service.right h6').html('');
-  hotel.addNewRoomService(hotel.searchDate, this.dataset.food, this.dataset.cost)
-  $(this).fadeOut(1000);
-  $(this).nextAll().slice(0, 2).fadeOut(1000);
-  // DOMupdates.showCurrCustRoomServiceHistoryList(date, food, cost)
+  $('.no-room-services-history-message').fadeOut(1000).remove();
+  hotel.addNewRoomService(hotel.searchDate, this.dataset.food, this.dataset.cost) 
 });
 
 //Bookings event listeners
@@ -132,6 +138,7 @@ $('.room-clear-button').on('click', function (e) {
 $('.given-day-rooms').on('click', '.book-room-button', function(e) {
   e.preventDefault();
   $('aside.booking.right h6').html('');
+  $('.no-booking-history-message').fadeOut(1000).remove();
   hotel.addNewBooking(hotel.searchDate, parseInt(this.id));
   $(this).fadeOut(1000);
   $(this).nextAll().slice(0, 2).fadeOut(1000);

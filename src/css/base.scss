@@ -24,7 +24,7 @@ h1, h2, button, input {
   font-family: $primary-font;
 }
 
-h3, h4, h5, h6, li, p {
+h3, h4, h5, h6, li, p, .type {
   font-family: $body-font;
 }
 
@@ -291,13 +291,17 @@ main {
 	.rooms-div {
 		display: flex;
     flex-direction: row;
-	}
+  }
+  
+  .customer-search-list {
+    width: 60%;
+  }
 
 	.given-day-rooms {
     display: inline;
     margin: 5px 10px;
     padding: 0;
-    max-height: 50vh;
+    max-height: 46vh;
     overflow: scroll;
 
     & h6 {
@@ -307,13 +311,14 @@ main {
   }
   
   .place-order-list {
-    display: inline;
+    display: inline-block;
     margin: 5px 10px;
     padding: 0;
-    max-height: 50vh;
+    max-height: 46vh;
     overflow: scroll;
 
     & h6 {
+      display: inline;
       margin: 5px;
       padding-left: 45px;
     }

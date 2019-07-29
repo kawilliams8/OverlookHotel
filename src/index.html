@@ -44,13 +44,16 @@
               <h4>Today's Arrivals:</h4>
               <ul class="today-customers"></ul>
             </aside>
-            <article>
+            <article class="customer-search-list">
               <h4>Find / Create a Customer:</h4>
               <input class="customer-search customer-search-input" type="text" placeholder="Customer Name"/>
               <button class="customer-search customer-search-button">Search</button>
               <button class="customer-search customer-add-button">Add Customer</button>
-              <span class="customer-search-message"></span>
-              <ul class="customer-stats-message">Message2</ul>
+              <button class="customer-search customer-reset-button">Reset</button>
+              <span class="customer-search-message type"></span>
+              <h4>Calculate Amount Owed:</h4>
+              <h3>Current Customer: <span class="header-name"></span></h3>
+              <h3><span class="customer-bill">$100</span></h3>
             </article>
           </div>
         </section>
@@ -68,14 +71,15 @@
               <ul class="given-day-orders"></ul>
             </article>
             <article>
-              <h4>Place New Room Service Order:</h4>
+              <h4>Place New Room Service Order</h4>
+              <h3>Current Customer: <span class="header-name"></span></h3>
               <input class="order-search place-order-search-input" type="text" placeholder="YYYY/MM/DD">
               <button class="order-search place-order-search-button">Search</button>
               <button class="order-search place-order-clear-button">Clear</button>
               <ul class="place-order-list"></ul>
             </article>
             <aside class="tab-3-aside room-service right">
-              <h4>Customer Room Service History:</h4>
+              <h4>Current Customer Room Service History:</h4>
             </aside>
           </div>
         </section>
@@ -96,7 +100,8 @@
               </h4>
             </article>
             <article>
-              <h4>Book Available Rooms:</h4>
+              <h4>Book an Available Room</h4>
+              <h3>Current Customer: <span class="header-name"></span></h3>
               <input class="room-search room-search-input" type="text" placeholder="YYYY/MM/DD">
               <button class="room-search room-search-button">Search</button>
               <button class="room-search room-clear-button">Clear</button>
@@ -105,7 +110,7 @@
               </div>
             </article>
             <aside class="tab-4-aside booking right">
-              <h4>Customer Booking History:</h4>
+              <h4>Current Customer Booking History:</h4>
             </aside>
           </div>
         </section>
