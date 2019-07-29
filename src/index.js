@@ -5,6 +5,7 @@ import './css/base.scss';
 import './images/spinner.gif';
 import './images/Overlook_background.png';
 import './images/typewriter.png';
+import './images/redrum.png';
 
 import Hotel from '../src/Hotel';
 import DOMupdates from './DOMupdates';
@@ -35,8 +36,10 @@ $(document).ready(() => {
 })
 
 $('.splash-button').on('click', () => {
-  $('main, footer').delay(600).fadeIn(600);
-  $('.splash-div').fadeOut(600);
+  $('.redrum').css('opacity', '0.7');
+  $('main, footer').delay(1000).fadeIn(1000);
+  $('.splash-div').fadeOut(400);
+  $('.redrum').fadeOut(2000);
   hotel.calculateOccupancy(hotel.searchDate);
   hotel.countAvailableRooms(hotel.searchDate);
   hotel.calculateRevenue(hotel.searchDate)
