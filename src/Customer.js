@@ -66,6 +66,8 @@ class Customer {
   }
 
   addCurrCustTotalBill() {
+    this.findCurrCustBookings(this);
+    this.findCurrCustRoomServices(this);
     let roomServiceBill = this.customerRoomServices.reduce((acc, order) => {
       acc += order.totalCost;
       return acc;
