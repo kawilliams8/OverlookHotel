@@ -13,11 +13,12 @@ import DOMupdates from '../src/DOMupdates';
 
 chai.spy.on(DOMupdates, 
   ['showToday', 'showCurrCustName', 'showOccupancy', 'showTodayAvail', 
-    'showRevenue', 'showAllTodayRooms', 'showHighOccupancy', 'showLowOccupancy',
-    'showTodayNoOrders', 'showAllGivenDayOrdersTitle', 'showAllGivenDayOrders',
-    'showCustomerNotFound', 'showCurrCustBookingHistoryTitle', 
-    'showCurrCustBookingHistoryList', 'showCurrCustRoomServiceHistoryTitle',
-    'showCurrCustRoomServiceHistoryList', 'showCurrCustBookingHistoryNone'], () => true)
+    'showRevenue', 'showAllTodayRooms', 'showNoTodayRooms', 'showHighOccupancy', 
+    'showLowOccupancy', 'showTodayNoOrders', 'showAllGivenDayOrdersTitle', 
+    'showAllGivenDayOrders', 'showCustomerNotFound', 'showTodayOrders',
+    'showCurrCustBookingHistoryTitle', 'showCurrCustBookingHistoryList', 
+    'showCurrCustRoomServiceHistoryTitle', 'showCurrCustRoomServiceHistoryList', 
+    'showCurrCustBookingHistoryNone', 'showNoTodayRoom'], () => true)
 
 describe('Hotel', () => {
 

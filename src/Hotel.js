@@ -43,8 +43,8 @@ class Hotel {
       return acc;
     }, 0);
     let total = +(bookingsRev + roomServiceRev).toFixed(2);
-    DOMupdates.showRevenue(bookingsRev, roomServiceRev, total);
-    return +(bookingsRev + roomServiceRev).toFixed(2)
+    DOMupdates.showRevenue(bookingsRev.toFixed(2), roomServiceRev.toFixed(2), total.toFixed(2));
+    return +(bookingsRev + roomServiceRev).toFixed(2);
   }
 
   //Customer methods
