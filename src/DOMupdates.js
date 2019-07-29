@@ -69,7 +69,7 @@ const DOMupdates = {
   },
 
   showAvailableRoomsGivenDay(number, type, cost, bedSize, bedNum, bidet) {
-    let listRooms = $(`<button class='book-room-button'>BOOK</button> <h5>Room: ${number}, Type: ${type.toUpperCase()}, Cost: $${cost.toFixed(2)}</h5>`);
+    let listRooms = $(`<button class="book-room-button" id="${number}">BOOK</button> <h5>Room: ${number}, Type: ${type.toUpperCase()}, Cost: $${cost.toFixed(2)}</h5>`);
     let listRoomDetails = $(`<h6> &#8226; Bed: ${bedSize.toUpperCase()}, Quantity: ${bedNum}, Bidet: ${bidet}</h6>`);
     $('.given-day-rooms').append(listRooms, listRoomDetails);
   },

@@ -288,14 +288,17 @@ main {
     flex-direction: row;
 	}
 
-	.given-day-rooms,
-	.given-day-rooms2 {
-	text-indent: -25px;
-	// margin: 5px 10px;
-	// width: 150px;
-  // justify-content: space-around;
-  max-height: 21vh;
-  overflow: scroll;
+	.given-day-rooms {
+    display: inline;
+    margin: 5px 10px;
+    padding: 0;
+    max-height: 21vh;
+    overflow: scroll;
+
+    & h6 {
+      margin: 5px;
+      padding-left: 45px;
+    }
 	}
 }
 

@@ -18,7 +18,7 @@ let sampleRoomServices = [
     totalCost: 11.15
   },
   {
-    userID: 2,
+    userID: 8,
     date: "2019/08/02",
     food: "Practical Granite Sandwich",
     totalCost: 14.87
@@ -84,7 +84,7 @@ let sampleRoomServices = [
     totalCost: 12.65
   },
   {
-    userID: 13,
+    userID: 2,
     date: "2019/10/01",
     food: "Handcrafted Metal Sandwich",
     totalCost: 12.36

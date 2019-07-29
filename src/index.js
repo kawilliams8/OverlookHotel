@@ -28,7 +28,7 @@ Promise.all([usersData, roomsData, bookingsData, roomServicesData])
 setTimeout(() => {
   hotel = new Hotel(users.users, rooms.rooms, bookings.bookings, roomServices.roomServices);
   hotel.getTodayDate();
-}, 400);
+}, 600);
 
 $(document).ready(() => {
   $('main, footer').hide();
@@ -76,8 +76,7 @@ $('.customer-add-button').on('click', function(e) {
   DOMupdates.clearCustomerNotFoundMessage();
 });
 
-$('.customer-search-input').on('keydown', function(e) {
-  e.preventDefault();
+$('.customer-search-input').on('keydown', function() {
   DOMupdates.clearCustomerNotFoundMessage();
 });
 
@@ -109,7 +108,12 @@ $('.room-clear-button').on('click', function (e) {
   $('.given-day-rooms').html('');
 });
 
-$('.book-room-button').on('click', function(e) {
+$('.given-day-rooms').on('click', '.book-room-button', function(e) {
   e.preventDefault();
-  console.log('clicked booking button!')
+  hotel.addNewBooking(hotel.searchDate, parseInt(this.id));
+  hotel.currentCustomer.findCurrCustBookings(hotel.currentCustomer);
+  $(this).fadeOut(1000);
+  $(this).nextAll().slice(0, 2).fadeOut(1000);
+  //Need to refresh customer history list
+  // DOMupdates.showCurrCustBookingHistoryList('date', 'room')
 });

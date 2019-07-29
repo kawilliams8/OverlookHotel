@@ -17,7 +17,7 @@ chai.spy.on(DOMupdates,
     'showTodayNoOrders', 'showAllGivenDayOrdersTitle', 'showAllGivenDayOrders',
     'showCustomerNotFound', 'showCurrCustBookingHistoryTitle', 
     'showCurrCustBookingHistoryList', 'showCurrCustRoomServiceHistoryTitle',
-    'showCurrCustRoomServiceHistoryList'], () => true)
+    'showCurrCustRoomServiceHistoryList', 'showCurrCustBookingHistoryNone'], () => true)
 
 describe('Hotel', () => {
 
