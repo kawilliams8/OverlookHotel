@@ -94,6 +94,27 @@ $('.order-clear-button').on('click', function (e) {
   $('.given-day-orders').html('');
 });
 
+$('.place-order-search-button').on('click', function (e) {
+  e.preventDefault();
+  hotel.searchDate = $('.place-order-search-input').val();
+  hotel.makeMenu();
+  $('.place-order-search-input').val('');
+});
+
+$('.place-order-clear-button').on('click', function (e) {
+  e.preventDefault();
+  $('.place-order-list').html('');
+});
+
+$('.place-order-list').on('click', '.place-order-button', function (e) {
+  e.preventDefault();
+  $('aside.room-service.right h6').html('');
+  hotel.addNewRoomService(hotel.searchDate, this.dataset.food, this.dataset.cost)
+  $(this).fadeOut(1000);
+  $(this).nextAll().slice(0, 2).fadeOut(1000);
+  // DOMupdates.showCurrCustRoomServiceHistoryList(date, food, cost)
+});
+
 //Bookings event listeners
 
 $('.room-search-button').on('click', function (e) {
@@ -110,10 +131,8 @@ $('.room-clear-button').on('click', function (e) {
 
 $('.given-day-rooms').on('click', '.book-room-button', function(e) {
   e.preventDefault();
+  $('aside.booking.right h6').html('');
   hotel.addNewBooking(hotel.searchDate, parseInt(this.id));
-  hotel.currentCustomer.findCurrCustBookings(hotel.currentCustomer);
   $(this).fadeOut(1000);
   $(this).nextAll().slice(0, 2).fadeOut(1000);
-  //Need to refresh customer history list
-  // DOMupdates.showCurrCustBookingHistoryList('date', 'room')
 });

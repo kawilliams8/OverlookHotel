@@ -69,7 +69,7 @@ const DOMupdates = {
   },
 
   showAvailableRoomsGivenDay(number, type, cost, bedSize, bedNum, bidet) {
-    let listRooms = $(`<button class="book-room-button" id="${number}">BOOK</button> <h5>Room: ${number}, Type: ${type.toUpperCase()}, Cost: $${cost.toFixed(2)}</h5>`);
+    let listRooms = $(`<button class='book-room-button' id='${number}'>BOOK</button> <h5>Room: ${number}, Type: ${type.toUpperCase()}, Cost: $${cost.toFixed(2)}</h5>`);
     let listRoomDetails = $(`<h6> &#8226; Bed: ${bedSize.toUpperCase()}, Quantity: ${bedNum}, Bidet: ${bidet}</h6>`);
     $('.given-day-rooms').append(listRooms, listRoomDetails);
   },
@@ -137,6 +137,10 @@ const DOMupdates = {
     $('aside.room-service.right').append(noItems);
   },
 
+  showMenu(food, cost) {
+    let listFoods = $(`<button class='place-order-button' data-food='${food}' data-cost='${cost}'>SELECT</button> <h5>Meal: ${food}, Cost: $${cost}</h5>`);
+    $('.place-order-list').append(listFoods);
+  },
 
 };
 

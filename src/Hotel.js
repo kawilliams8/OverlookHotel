@@ -92,6 +92,12 @@ class Hotel {
   addNewBooking(date, roomNumber) {
     let newBooking = new Bookings(this.currentCustomer.id, date, roomNumber);
     this.bookings.push(newBooking);
+    this.currentCustomer.findCurrCustBookings(this.currentCustomer);
+    this.currentCustomer.customerBookings.forEach(booking => {
+      let date = booking.date;
+      let room = booking.roomNumber;
+    DOMupdates.showCurrCustBookingHistoryList(date, room)
+    });
   }
 
   countAvailableRooms(date) {
@@ -196,8 +202,16 @@ class Hotel {
   //Room Service methods
 
   addNewRoomService(date, food, cost) {
-    let service1 = new RoomServices(this.currentCustomer.id, date, food, cost);
-    this.roomServices.push(service1);
+    let service = new RoomServices(this.currentCustomer.id, date, food, cost);
+    this.roomServices.push(service);
+    this.currentCustomer.findCurrCustRoomServices(this.currentCustomer);
+    this.currentCustomer.customerRoomServices.forEach(order => {
+      let date = order.date;
+      let food = order.food;
+      let cost = parseInt(order.totalCost);
+      console.log(date, food, cost)
+      DOMupdates.showCurrCustRoomServiceHistoryList(date, food, cost);
+    });
   }
 
   findTodayRoomServices() {
@@ -232,11 +246,19 @@ class Hotel {
   }
 
   makeMenu() {
-    return this.roomServices.reduce((acc, order) => {
+    let menu = this.roomServices.reduce((acc, order) => {
       !acc.includes({ food: order.food, price: order.totalCost }) ?
         acc.push({food: order.food, price: order.totalCost}) : false;
       return acc;
     }, []).sort((a, b) => a.price - b.price);
+
+    menu.forEach(option => {
+      let food = option.food;
+      let cost = option.price;
+      DOMupdates.showMenu(food, cost);
+    });
+
+    return menu;
   }
 
   populateRoomServiceHistory() {
@@ -247,7 +269,7 @@ class Hotel {
         let food = order.food;
         let cost = order.totalCost;
         DOMupdates.showCurrCustRoomServiceHistoryList(date, food, cost);
-      })
+      });
     } else {
       console.log('in RS history else');
       DOMupdates.showCurrCustRoomServiceHistoryNone();
