@@ -34,7 +34,7 @@ class Customer {
         return acc;
       }, 0);
     }
-    DOMupdates.showCustomerBill1(roomServicesBill);
+    DOMupdates.showCustomerBill1(roomServicesBill.toFixed(2));
     return roomServicesBill;
   }
 
@@ -43,12 +43,12 @@ class Customer {
     let roomServiceBill = 0;
     if (this.customerRoomServices.length > 0) {
       roomServiceBill = this.customerRoomServices.reduce((acc, order) => {
-      acc += order.totalCost;
-      return acc;
-    }, 0);
-  }
-  DOMupdates.showCustomerBill2(roomServiceBill)
-  return roomServiceBill;
+        acc += order.totalCost;
+        return acc;
+      }, 0);
+    }
+    DOMupdates.showCustomerBill2(roomServiceBill.toFixed(2))
+    return roomServiceBill;
   }
 
   addCurrCustBookingsBill() {
@@ -56,11 +56,10 @@ class Customer {
     let bookingsBill = 0;
     if (this.customerBookings.length > 0) {
       bookingsBill = this.customerBookings.reduce((acc, booking) => {
-        console.log(booking.roomNumber, this.allRooms);
-      acc += this.allRooms.find(room => room.number === booking.roomNumber).costPerNight;
-      return acc;
-    }, 0);
-    DOMupdates.showCustomerBill3(bookingsBill);
+        acc += this.allRooms.find(room => room.number === booking.roomNumber).costPerNight;
+        return acc;
+      }, 0);
+      DOMupdates.showCustomerBill3(bookingsBill.toFixed(2));
     }
     return bookingsBill;
   }
@@ -68,15 +67,24 @@ class Customer {
   addCurrCustTotalBill() {
     this.findCurrCustBookings(this);
     this.findCurrCustRoomServices(this);
-    let roomServiceBill = this.customerRoomServices.reduce((acc, order) => {
-      acc += order.totalCost;
-      return acc;
-    }, 0);
-    let bookingsBill = 1;
-    DOMupdates.showCustomerBill4(bookingsBill + roomServicesBill);
-    return (bookingsBill + roomServiceBill);
+    let roomServicesBill = 0;
+    let bookingsBill = 0;
+    if (this.customerRoomServices.length > 0) {
+      roomServicesBill = this.customerRoomServices.reduce((acc, order) => {
+        acc += order.totalCost;
+        return acc;
+      }, 0);
+    }
+    if (this.customerBookings.length > 0) {
+      bookingsBill = this.customerBookings.reduce((acc, booking) => {
+        acc += this.allRooms.find(room => room.number === booking.roomNumber).costPerNight;
+        return acc;
+      }, 0);
+    }
+    DOMupdates.showCustomerBill4((bookingsBill + roomServicesBill).toFixed(2));
+    return (bookingsBill + roomServicesBill);
   }
-
 }
+
 
 export default Customer;

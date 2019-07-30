@@ -86,10 +86,10 @@ html {
 
 .redrum {
   position: absolute;
-  left: 15%;
-  top: auto;
+  left: 10%;
+  top: 30%;
   opacity: .1;
-  width: 70%;
+  width: 80%;
   z-index: -1;
 }
 
@@ -265,7 +265,7 @@ main {
     display: inline;
     margin: 2px;
     padding: 2px;
-  }
+    }
     
     & h5{
       display: inline;
@@ -295,7 +295,13 @@ main {
 	button:active {
 		background-color: $text-light;
 		color: $text-dark;
-	}
+  }
+
+  .main-charts {
+  border: red 1px solid;
+  color: red;
+  width: 80%;
+  }
 
 	.rooms-div {
 		display: flex;

@@ -36,10 +36,10 @@ $(document).ready(() => {
 })
 
 $('.splash-button').on('click', () => {
-  $('.redrum').css('opacity', '0.7');
-  $('main, footer').delay(1000).fadeIn(1000);
-  $('.splash-div').fadeOut(400);
-  $('.redrum').fadeOut(2000);
+  $('.redrum').css('opacity', '0.9');
+  $('main, footer').delay(1000).fadeIn(500);
+  $('.splash-div').fadeOut(300);
+  $('.redrum').delay(200).fadeOut(1500);
   hotel.calculateOccupancy(hotel.searchDate);
   hotel.countAvailableRooms(hotel.searchDate);
   hotel.calculateRevenue(hotel.searchDate)
@@ -69,6 +69,7 @@ $('.customer-search-button').on('click', function (e) {
   hotel.currentCustomer.findRevCurrCustRoomServicesGivenDay(hotel.searchDate);
   hotel.currentCustomer.findRevCurrCustRoomServiceForever();
   hotel.currentCustomer.addCurrCustBookingsBill();
+  hotel.currentCustomer.addCurrCustTotalBill()
 });
 
 $('.customer-add-button').on('click', function(e) {
