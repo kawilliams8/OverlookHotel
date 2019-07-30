@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rokkitt:200&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   </head>
   <body>
     <img class="redrum" src="./images/redrum.png" alt="redrum written in lipstick">
@@ -42,8 +43,12 @@
               <h4>Today's Total Revenue: $<span class="today-total-sales"></span></h4>
             </aside>
             <article class="main-charts">
-              <canvas class="main-charts">Hello1</canvas>
-              <canvas class="main-charts">Hello2</canvas>
+              <figure class="chart-class-1">
+                <canvas id="revenue-chart" class="main-charts" height="400px" width="400px">Hello1</canvas>
+              </figure>
+              <figure class="chart-class-2">
+                <canvas id="occupancy-chart" class="main-charts" height="400px" width="400px">Hello2</canvas>
+              </figure>
             </article>
           </div>
         </section>

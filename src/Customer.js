@@ -1,5 +1,4 @@
 import DOMupdates from './DOMupdates';
-import Hotel from './Hotel';
 
 class Customer {
   constructor(id, name, allBookings, allRoomServices, allRooms) {
@@ -47,7 +46,7 @@ class Customer {
         return acc;
       }, 0);
     }
-    DOMupdates.showCustomerBill2(roomServiceBill.toFixed(2))
+    DOMupdates.showCustomerBill2(roomServiceBill.toFixed(2));
     return roomServiceBill;
   }
 
@@ -59,9 +58,9 @@ class Customer {
         acc += this.allRooms.find(room => room.number === booking.roomNumber).costPerNight;
         return acc;
       }, 0);
-      DOMupdates.showCustomerBill3(bookingsBill.toFixed(2));
     }
-    return bookingsBill;
+    DOMupdates.showCustomerBill3(bookingsBill.toFixed(2));
+    return bookingsBill.toFixed(2);
   }
 
   addCurrCustTotalBill() {

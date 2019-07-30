@@ -31,6 +31,24 @@ class Hotel {
     DOMupdates.showToday(this.today);
   }
 
+  calculateBookingsRevenue(date) {
+    let roomNums = this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
+    let bookingsRev = roomNums.reduce((acc, roomNum) => {
+      acc += this.rooms.find(room => room.number === roomNum).costPerNight;
+      return acc;
+    }, 0);
+    return bookingsRev;
+  }
+
+  calculateRoomServicesRevenue(date) {
+    let ordersForDate = this.roomServices.filter(order => order.date === date);
+    let roomServiceRev = ordersForDate.reduce((acc, roomService) => {
+      acc += roomService.totalCost;
+      return acc;
+    }, 0);
+    return roomServiceRev;
+  }
+
   calculateRevenue(date) {
     let roomNums = this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
     let bookingsRev = roomNums.reduce((acc, roomNum) => {
@@ -71,7 +89,6 @@ class Hotel {
     this.currentCustomer = newCustomer;
     this.customers.push(newCustomer);
     DOMupdates.showCurrCustName(this.currentCustomer);
-    // DOMupdates.showCustomerAddedMessage(newCustomer.name);
   }
 
   findAllTodayCustomers(date) {
@@ -97,7 +114,7 @@ class Hotel {
     this.currentCustomer.customerBookings.forEach(booking => {
       let date = booking.date;
       let room = booking.roomNumber;
-    DOMupdates.showCurrCustBookingHistoryList(date, room)
+      DOMupdates.showCurrCustBookingHistoryList(date, room)
     });
   }
 
@@ -110,6 +127,11 @@ class Hotel {
     }).sort((a, b) => a.number - b.number);
     DOMupdates.showTodayAvail(availableRooms.length);
     return availableRooms;
+  }
+
+  countBookedRooms(date) {
+    let bookedRooms = this.bookings.filter(booking => booking.date === date);
+    return bookedRooms;
   }
 
   listAvailableRoomsGivenDay(date) {

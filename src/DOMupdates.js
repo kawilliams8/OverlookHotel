@@ -118,7 +118,7 @@ const DOMupdates = {
 
   showTodayOrders(customer, food, cost) {
     let listName = $(`<h5>${customer.name}:</h5>`);
-    let listOrder = $(`<h6> &#8226; ${food}, $${cost}</h6>`);
+    let listOrder = $(`<h6> &#8226; ${food}, $${cost.toFixed(2)}</h6>`);
     $('.today-orders').append(listName, listOrder)
   },
 

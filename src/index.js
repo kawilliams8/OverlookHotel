@@ -36,10 +36,8 @@ $(document).ready(() => {
 })
 
 $('.splash-button').on('click', () => {
-  $('.redrum').css('opacity', '0.9');
-  $('main, footer').delay(1000).fadeIn(500);
+  $('main, footer').delay(500).fadeIn(500);
   $('.splash-div').fadeOut(300);
-  $('.redrum').delay(200).fadeOut(1500);
   hotel.calculateOccupancy(hotel.searchDate);
   hotel.countAvailableRooms(hotel.searchDate);
   hotel.calculateRevenue(hotel.searchDate)
@@ -48,6 +46,70 @@ $('.splash-button').on('click', () => {
   hotel.findTodayBookings(hotel.searchDate);
   hotel.findPopularBookingDate();
   hotel.findUnpopularBookingDate();
+  
+  const revenueChart = new Chart($('#revenue-chart'), {
+    type: 'bar',
+    data: {
+      labels: ['Room Service', 'Bookings'],
+      datasets: [{
+        label: 'Today\'s Revenue',
+        data: [hotel.calculateRoomServicesRevenue(hotel.searchDate).toFixed(2), hotel.calculateBookingsRevenue(hotel.searchDate).toFixed(2)],
+        backgroundColor: [
+          'rgba(223, 95, 24, .9)',
+          'rgba(223, 95, 24, .9)',
+
+        ]
+      }]
+    },
+    options: {
+      defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Roboto'",
+      responsive: false,
+      maintainAspectRatio: true,
+      aspectRatio: 2,
+      scales: {
+        yAxes: [{
+          gridLines: {
+            display: false
+          },
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+  const occupancyChart = new Chart($('#occupancy-chart'), {
+    type: 'pie',
+    data: {
+      labels: ['Available Rooms', 'Booked Rooms'],
+      datasets: [{
+        label: 'Today\'s Occupancy',
+        data: [hotel.countAvailableRooms(hotel.searchDate).length, hotel.countBookedRooms(hotel.searchDate).length],
+        backgroundColor: [
+          'rgba(152, 31, 36, .9)',
+          'rgba(223, 95, 24, .9)',
+
+        ]
+      }]
+    },
+    options: {
+      defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Roboto'",
+      responsive: false,
+      maintainAspectRatio: true,
+      aspectRatio: 2,
+      scales: {
+        yAxes: [{
+          gridLines: {
+            display: false
+          },
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
 });
 
 $('ul.tabs li').click(function () {
@@ -125,7 +187,7 @@ $('.place-order-list').on('click', '.place-order-button', function (e) {
   e.preventDefault();
   $('aside.room-service.right h6').html('');
   $('.no-room-services-history-message').fadeOut(1000).remove();
-  hotel.addNewRoomService(hotel.searchDate, this.dataset.food, this.dataset.cost) 
+  hotel.addNewRoomService(hotel.searchDate, this.dataset.food, this.dataset.cost); 
 });
 
 //Bookings event listeners
