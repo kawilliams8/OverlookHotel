@@ -212,3 +212,5 @@ $('.given-day-rooms').on('click', '.book-room-button', function(e) {
   $(this).fadeOut(1000);
   $(this).nextAll().slice(0, 2).fadeOut(1000);
 });
+
+$('.room-type-search').on('change', )
