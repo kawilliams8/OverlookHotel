@@ -268,7 +268,7 @@ main {
     }
     
     & h5{
-      display: block;
+      display: inline-block;
       margin: 2px;
       padding: 2px;
     }
@@ -320,7 +320,7 @@ main {
     display: inline;
     margin: 5px 10px;
     padding: 0;
-    max-height: 46vh;
+    max-height: 41vh;
     overflow: scroll;
 
     & h6 {
@@ -342,6 +342,12 @@ main {
       padding-left: 45px;
     }
   }
+}
+
+select, option {
+  background-color: $grey;
+  font-family: $body-font;
+  font-size: 16px;
 }
 
 footer {
