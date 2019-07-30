@@ -192,6 +192,11 @@ $('.place-order-list').on('click', '.place-order-button', function (e) {
 
 //Bookings event listeners
 
+$('.room-type-search').on('change', function () {
+  let type = $('.room-type-search option:selected').val();
+  hotel.searchRoomType = type.toUpperCase();
+});
+
 $('.room-search-button').on('click', function (e) {
   e.preventDefault();
   hotel.searchDate = $('.room-search-input').val();
@@ -213,4 +218,3 @@ $('.given-day-rooms').on('click', '.book-room-button', function(e) {
   $(this).nextAll().slice(0, 2).fadeOut(1000);
 });
 
-$('.room-type-search').on('change', )

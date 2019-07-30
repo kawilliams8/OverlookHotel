@@ -9,8 +9,9 @@ class Hotel {
     this.bookings = bookings.map(booking => new Bookings(booking.userID, booking.date, booking.roomNumber)) || [];
     this.roomServices = roomServices.map(roomService => new RoomServices(roomService.userID, roomService.date, roomService.food, roomService.totalCost)) || [];
     this.customers = users.map(user => new Customer(user.id, user.name, this.bookings, this.roomServices, this.rooms)) || [];
-    this.searchDate = '';
     this.today = '';
+    this.searchDate = '';
+    this.searchRoomType = '';
     this.searchCustomer = '';
     this.currentCustomer = {};
   }
@@ -135,12 +136,22 @@ class Hotel {
   }
 
   listAvailableRoomsGivenDay(date) {
+    let availableRooms = [];
     let bookedRooms = this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
-    let availableRooms = this.rooms.filter((room) => {
-      if ((bookedRooms.indexOf(room.number) < 0)) {
-        return room;
-      }
-    }).sort((a, b) => a.number - b.number);
+
+    if (this.searchRoomType) {
+      availableRooms = this.rooms.filter((room) => {
+        if ((bookedRooms.indexOf(room.number) < 0) && (room.roomType.toUpperCase() === this.searchRoomType)) {
+          return room;
+        }
+      }).sort((a, b) => a.number - b.number);
+    } else {
+      availableRooms = this.rooms.filter((room) => {
+        if ((bookedRooms.indexOf(room.number) < 0)) {
+          return room;
+        }
+      }).sort((a, b) => a.number - b.number);
+    }
     if (availableRooms.length > 0) {
       availableRooms.forEach(room => {
         let number = room.number;
