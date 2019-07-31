@@ -51,9 +51,9 @@ html {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    height: 410px;
+    height: 450px;
     margin: 10% auto;
-    width: 50%;
+    width: 60%;
   }
 
   &.splash-h3 {
@@ -367,5 +367,34 @@ footer {
     margin: 20px auto;
     padding: 0;
     text-align: center;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+
+  h2.splash.splash-h2 {
+    font-size: 51px;
+    line-height: 51px;
+    text-align: center;
+  }
+
+  img.splash.splash-spinner {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  h3.splash.splash-h3 {
+    font-size: 16px;
+  }
+
+  h2.splash.splash-h2 {
+    font-size: 33px;
+    line-height: 33px;
+  }
+
+  .splash.splash-button {
+    width: 50%;
   }
 }
