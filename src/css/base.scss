@@ -381,6 +381,15 @@ footer {
   img.splash.splash-spinner {
     display: none;
   }
+
+  header h1 {
+    font-size: 33px;
+    padding: 0px 0px 0px 20px;
+  }
+
+  header img {
+    height: 30px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
