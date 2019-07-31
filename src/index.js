@@ -31,7 +31,7 @@ Promise.all([usersData, roomsData, bookingsData, roomServicesData])
 setTimeout(() => {
   hotel = new Hotel(users.users, rooms.rooms, bookings.bookings, roomServices.roomServices);
   hotel.getTodayDate();
-}, 600);
+}, 2000);
 
 $(document).ready(() => {
   $('main, footer').hide();

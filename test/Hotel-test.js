@@ -24,10 +24,11 @@ chai.spy.on(DOMupdates,
 
 describe('Hotel', () => {
 
-  let hotel;
+  let customer, hotel;
   beforeEach(() => {
     hotel = new Hotel(mockUsers, mockRooms, mockBookings, mockRoomServices);
     hotel.getTodayDate();
+    customer = hotel.addNewCustomer('Jane Smith');
   });
 
   it('should be a function which instantiates an instance of Hotel', () => {
@@ -50,9 +51,9 @@ describe('Hotel', () => {
   })
   
   it('should add a new customer, with an id and name, to the existing customers', () => {
-    expect(hotel.customers.length).to.equal(15);
-    hotel.addNewCustomer('Jane Smith');
     expect(hotel.customers.length).to.equal(16);
+    hotel.addNewCustomer('Jane Smith');
+    expect(hotel.customers.length).to.equal(17);
     expect(hotel.customers[15].id).to.equal(16);
     expect(hotel.customers[15].name).to.equal('Jane Smith');
   });
@@ -78,7 +79,7 @@ describe('Hotel', () => {
 
   it('should calculate a given date\'s occupancy percentage', () => {
     let occupancy = hotel.calculateOccupancy('2019/10/17');
-    expect(occupancy).to.equal(.28);
+    expect(occupancy).to.equal(.14);
   });
 
   it('should calculate a day\'s total revenue from bookings and room service orders', () => {
@@ -88,14 +89,14 @@ describe('Hotel', () => {
 
   it('should create a list of the available rooms for a given date', () => {
     let availableRooms = hotel.countAvailableRooms('2019/10/17');
-    expect(availableRooms.length).to.equal(18);
+    expect(availableRooms.length).to.equal(43);
   });
 
   it('should be able to filter today\'s available rooms by type', () => {
     let availableRooms = hotel.countAvailableRooms('2019/07/26');
-    expect(availableRooms.length).to.equal(21);
+    expect(availableRooms.length).to.equal(46);
     let filteredRooms = hotel.filterTodayAvailableRooms(availableRooms, 'junior suite');
-    expect(filteredRooms.length).to.equal(5);
+    expect(filteredRooms.length).to.equal(12);
   })
 
   it('should create a list of all today\'s room service orders', () => {
