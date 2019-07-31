@@ -7,10 +7,14 @@ This project was built from a small starter kit using JavaScript, HTML/SCSS, Cha
 ## Author:
 * Katherine Williams ([Kawilliams8](https://github.com/kawilliams8))
 
-### Project Images
+## Splash Screen and Selecting a Customer
+![Splash Screen](https://github.com/kawilliams8/OverlookHotel/blob/master/2019-07-30%2023.50.59.gif)
 
-## Splash Screen
-![Splash Screen](https://github.com/kawilliams8/OverlookHotel/blob/master/Screen%20Shot%202019-07-30%20at%203.21.00%20PM.png)
+## Searching and Adding Room Service Orders
+![Room Services](https://github.com/kawilliams8/OverlookHotel/blob/master/2019-07-30%2023.51.42.gif)
+
+## Searching and Booking a Room
+![Booking](https://github.com/kawilliams8/OverlookHotel/blob/master/2019-07-30%2023.52.23.gif)
 
 ## Mobile Layout
 ![Mobile View](https://github.com/kawilliams8/OverlookHotel/blob/master/Screen%20Shot%202019-07-30%20at%2010.59.06%20PM.png)
