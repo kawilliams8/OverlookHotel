@@ -7,7 +7,9 @@
     "start": "webpack-dev-server",
     "build": "webpack",
     "test": "mochapack 'test/**/*.js'",
-    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
+    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'",
+    "deploy": "gh-pages -d dist"
+    }
   },
   "repository": {
     "type": "git",
