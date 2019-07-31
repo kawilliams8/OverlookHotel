@@ -139,7 +139,6 @@ class Hotel {
   listAvailableRoomsGivenDay(date) {
     let availableRooms = [];
     let bookedRooms = this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
-
     if (this.searchRoomType) {
       availableRooms = this.rooms.filter((room) => {
         if ((bookedRooms.indexOf(room.number) < 0) && (room.roomType.toUpperCase() === this.searchRoomType)) {
