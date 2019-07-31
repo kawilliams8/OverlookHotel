@@ -9,18 +9,17 @@
     "test": "mochapack 'test/**/*.js'",
     "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'",
     "deploy": "gh-pages -d dist"
-    }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/turingschool-examples/gametime-starter.git"
+    "url": "git+https://github.com/kawilliams8/OverlookHotel.git"
   },
   "author": "Turing School of Software and Design",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/turingschool-examples/gametime-starter/issues"
   },
-  "homepage": "https://github.com/turingschool-examples/gametime-starter#readme",
+  "homepage": "https://kawilliams8.github.io/OverlookHotel/",
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-spies": "^1.0.0",
