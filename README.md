@@ -8,7 +8,7 @@ This project was built from a small starter kit using JavaScript, HTML/SCSS, Cha
 * Katherine Williams ([Kawilliams8](https://github.com/kawilliams8))
 
 ### Project Images
-![Screen Recording](https://github.com/kawilliams8/OverlookHotel/blob/master/Screen%20Recording%202019-07-30%20at%2011.07.13%20PM.mov)
+![Mobile View](https://github.com/kawilliams8/OverlookHotel/blob/master/Screen%20Shot%202019-07-30%20at%2010.59.06%20PM.png)
 
 
 ## Project Installation
