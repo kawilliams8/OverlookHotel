@@ -9,7 +9,7 @@ This project was built from a small starter kit using JavaScript, HTML/SCSS, Cha
 
 ### Project Images
 ![Mobile View](https://github.com/kawilliams8/OverlookHotel/blob/master/Screen%20Shot%202019-07-30%20at%2010.59.06%20PM.png)
-
+![Mobile View](https://github.com/kawilliams8/OverlookHotel/blob/master/Screen%20Shot%202019-07-30%20at%2011.00.16%20PM.png)
 
 ## Project Installation
 Clone down the repo in your terminal.
