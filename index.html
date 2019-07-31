@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Overlook Hotel</title>
+    <meta name="author" content="Katherine Williams">
+    <meta name="keywords" content="HTML,SCSS,JavaScript,webpack,jQuery,Turing,OOP,TDD">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt:200&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  </head>
+  <body>
+    <img class="redrum" src="./images/redrum.png" alt="redrum written in lipstick">
+    <div class="splash splash-div">
+      <h3 class="splash splash-h3">Welcome to the</h3>
+      <h2 class="splash splash-h2">OVERLOOK HOTEL</h2>
+      <img class="splash splash-spinner" src="/images/spinner.gif" alt="spinner animation">
+      <button class="splash main splash-button">ENTER</button>
+    </div>
+    <main>
+      <header>
+        <img class="logo" src="./images/typewriter.png" alt="typewriter logo">
+        <h1>Overlook Hotel</h1>
+        <aside class="header-aside">
+          <h2>Today's Date: <span class="header-today"></span></h2>
+          <h3>Current Customer: <span class="header-name"></span></h3>
+        </aside>
+      </header>
+      <main class="tabs-container">
+        <ul class="tabs">
+          <li class="tab-link current" data-tab="tab-1">MAIN</li>
+          <li class="tab-link" data-tab="tab-2">CUSTOMERS</li>
+          <li class="tab-link" data-tab="tab-3">ORDERS</li>
+          <li class="tab-link" data-tab="tab-4">ROOMS</li>
+        </ul>
+        <section id="tab-1" class="tab-content current">
+          <div class="div-main-content">
+            <aside class="tab-1-aside left">
+              <h4>Today's Availability: <span class="today-availability"></span> of 50 rooms</h4>
+              <h4>Today's Occupancy: <span class="today-occupancy"></span>%</h4>
+              <h4>Today's Bookings Revenue: $<span class="today-bookings-sales"></span></h4>
+              <h4>Today's Room Service Revenue: $<span class="today-room-services"></span></h4>
+              <h4>Today's Total Revenue: $<span class="today-total-sales"></span></h4>
+            </aside>
+            <article class="main-charts">
+              <figure class="chart-class-1">
+                <canvas id="revenue-chart" class="main-charts" height="400px" width="400px">Hello1</canvas>
+              </figure>
+              <figure class="chart-class-2">
+                <canvas id="occupancy-chart" class="main-charts" height="400px" width="400px">Hello2</canvas>
+              </figure>
+            </article>
+          </div>
+        </section>
+        <section id="tab-2" class="tab-content">
+          <div class="div-main-content">
+            <aside class="tab-2-aside left">
+              <h4>Today's Arrivals:</h4>
+              <ul class="today-customers"></ul>
+            </aside>
+            <article class="customer-search-list">
+              <h4>Find / Create a Customer:</h4>
+              <input class="customer-search customer-search-input" type="text" placeholder="Customer Name"/>
+              <button class="customer-search customer-search-button">Search</button>
+              <button class="customer-search customer-add-button">Add Customer</button>
+              <button class="customer-search customer-reset-button">Reset</button>
+              <span class="customer-search-message type"></span>
+              <h4>Calculate Amount Owed:</h4>
+              <h3>Current Customer: <span class="header-name"></span></h3>
+              <h5>Today's Room Services $<span class="customer-today-room-service-bill bill">--</span></h5>
+              <h5>Total Room Services $<span class="customer-forever-room-service-bill bill">--</span></h5>
+              <h5>Total Bookings $<span class="customer-bookings-bill bill">--</span></h5>
+              <h3>Total Owed $<span class="customer-total-bill bill">--</span></h3>
+            </article>
+          </div>
+        </section>
+        <section id="tab-3" class="tab-content">
+          <div class="div-main-content">
+            <aside class="tab-3-aside left">
+              <h4>Today's Orders:</h4>
+              <ul class="today-orders"></ul>
+            </aside>
+            <article>
+              <h4>Find Room Service Orders:</h4>
+              <input class="order-search order-search-input" type="text" placeholder="YYYY/MM/DD">
+              <button class="order-search order-search-button">Search</button>
+              <button class="order-search order-clear-button">Clear</button>
+              <ul class="given-day-orders"></ul>
+            </article>
+            <article>
+              <h4>Place New Room Service Order</h4>
+              <h3>Current Customer: <span class="header-name"></span></h3>
+              <input class="order-search place-order-search-input" type="text" placeholder="YYYY/MM/DD">
+              <button class="order-search place-order-search-button">Search</button>
+              <button class="order-search place-order-clear-button">Clear</button>
+              <ul class="place-order-list"></ul>
+            </article>
+            <aside class="tab-3-aside room-service right">
+              <h4>Current Customer Room Service History:</h4>
+            </aside>
+          </div>
+        </section>
+        <section id="tab-4" class="tab-content">
+          <div class="div-main-content">
+            <aside class="tab-4-aside left">
+              <h4>Today's Booked Rooms:</h4>
+              <ul class="today-bookings"></ul>
+            </aside>
+            <article>
+              <h4>Lowest Occupancy Date: 
+                <span class="room-low-occupancy"></span>, with 
+                <span class="room-low-count"></span> rooms booked.
+              </h4>
+              <h4>Highest Occupancy Dates: 
+                <span class="room-high-occupancy"></span>, with 
+                <span class="room-high-count"></span> rooms booked, each day.
+              </h4>
+            </article>
+            <article>
+              <h4>Book an Available Room</h4>
+              <h3>Current Customer: <span class="header-name"></span></h3>
+              <form class="form-room-type"></form>
+              <select class="room-type-search">
+                <option selected="selected" value="All Available Rooms">All Available Rooms</option>
+                <option value="Single Room">Single Room</option>
+                <option value="Suite">Suite</option>
+                <option value="Junior Suite">Junior Suite</option>
+                <option value="Residential Suite">Residential Suite</option>
+              </select>
+              <input class="room-search room-search-input" type="text" placeholder="YYYY/MM/DD">
+              <button class="room-search room-search-button">Search</button>
+              <button class="room-search room-clear-button">Clear</button>
+              <div class="rooms-div">
+                <ul class="given-day-rooms"></ul>
+              </div>
+            </article>
+            <aside class="tab-4-aside booking right">
+              <h4>Current Customer Booking History:</h4>
+            </aside>
+          </div>
+        </section>
+      </main>
+    <footer>
+      <h4>The Overlook Hotel, Colorado</h4>
+      <h5>Copyright &copy 1921</h5>
+    </footer>
+  <script type="text/javascript" src="main.bundle.js"></script></body>
+</html>
