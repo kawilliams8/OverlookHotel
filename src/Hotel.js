@@ -86,10 +86,11 @@ class Hotel {
 
   addNewCustomer(name) {
     let id = this.customers.length + 1;
-    let newCustomer = new Customer(id, name, this.bookings, this.roomServices);
+    let newCustomer = new Customer(id, name, this.bookings, this.roomServices, this.rooms);
     this.currentCustomer = newCustomer;
     this.customers.push(newCustomer);
     DOMupdates.showCurrCustName(this.currentCustomer);
+    return newCustomer;
   }
 
   findAllTodayCustomers(date) {
@@ -183,7 +184,7 @@ class Hotel {
     if (todayBookings.length > 0) {
       todayBookings.forEach(booking => {
         let room = this.rooms.find(room => room.number === booking.roomNumber);
-        let number = room.number;
+        let number = room.roomNumber;
         let type = room.roomType;
         let cost = room.costPerNight;
         let bedSize = room.bedSize;

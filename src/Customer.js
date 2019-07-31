@@ -60,7 +60,7 @@ class Customer {
       }, 0);
     }
     DOMupdates.showCustomerBill3(bookingsBill.toFixed(2));
-    return bookingsBill.toFixed(2);
+    return +(bookingsBill).toFixed(2);
   }
 
   addCurrCustTotalBill() {
@@ -81,7 +81,7 @@ class Customer {
       }, 0);
     }
     DOMupdates.showCustomerBill4((bookingsBill + roomServicesBill).toFixed(2));
-    return (bookingsBill + roomServicesBill);
+    return +(bookingsBill + roomServicesBill).toFixed(2);
   }
 }
 
