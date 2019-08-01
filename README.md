@@ -21,9 +21,6 @@ The project design was influenced by 'The Shining', Stanley Kubrick's 1980 horro
 ## Mobile Layout
 ![Mobile View](https://github.com/kawilliams8/OverlookHotel/blob/master/Screen%20Shot%202019-07-30%20at%2010.59.06%20PM.png)
 
-## Mobile Layout
-![Mobile View](https://github.com/kawilliams8/OverlookHotel/blob/master/Screen%20Shot%202019-07-30%20at%2011.00.16%20PM.png)
-
 ## Project Installation
 Clone down the repo in your terminal.
 
