@@ -1,9 +1,6 @@
 import $ from 'jquery';
 import './css/base.scss';
-const ghpages = require('gh-pages');
-ghpages.publish('dist', function (err) { });
 
-// import all images
 import './images/spinner.gif';
 import './images/Overlook_background.png';
 import './images/typewriter.png';
