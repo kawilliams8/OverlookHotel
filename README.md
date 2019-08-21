@@ -9,6 +9,9 @@ The project design was influenced by 'The Shining', Stanley Kubrick's 1980 horro
 ## Author:
 * Katherine Williams ([kawilliams8](https://github.com/kawilliams8))
 
+## View Overlook Hotel
+[GitHub Pages](http://kawilliams8.github.io/OverlookHotel)
+
 ## Splash Screen and Selecting a Customer
 ![Splash Screen](https://github.com/kawilliams8/OverlookHotel/blob/master/2019-07-30%2023.50.59.gif)
 
